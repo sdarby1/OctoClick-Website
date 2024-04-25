@@ -1,0 +1,10 @@
+::marker {
+    content: none;
+}
+
+
+header nav ul{
+    display: flex;
+    gap: 20px;
+    padding: 0px;
+}
