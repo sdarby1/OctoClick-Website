@@ -1,11 +1,11 @@
 import { useRef, useState, useEffect } from 'react';
-import PlayIcon from '../images/icons/play-icon.svg'; // Pfad anpassen
-import PauseIcon from '../images/icons/pause-icon.svg'; // Pfad anpassen
+import PlayIcon from '../images/icons/play-icon.svg';
+import PauseIcon from '../images/icons/pause-icon.svg'; 
 
 const videoData = [
   { 
     src: "/videos/start.mp4", 
-    poster: "/images/thumbnail/thumbnail.png", // Thumbnail nur für das erste Video
+    poster: "/images/thumbnail/thumbnail.png", 
     choices: [{ text: "Wahl 1", nextIndex: 1 }, { text: "Wahl 2", nextIndex: 2 }]
   },
   { src: "/videos/choice1.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
@@ -23,8 +23,8 @@ const CustomVideoPlayer = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const videoContainerRef = useRef(null);
   const [showChoices, setShowChoices] = useState(false);
-  const [progress, setProgress] = useState(0); // Aktueller Fortschritt des Videos (in Sekunden)
-  const [duration, setDuration] = useState(0); // Gesamtdauer des Videos (in Sekunden)
+  const [progress, setProgress] = useState(0); 
+  const [duration, setDuration] = useState(0); 
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {

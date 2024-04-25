@@ -1,20 +1,19 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../components/Header'; // Stelle sicher, dass der Pfad korrekt ist
 
 const RootLayout = () => {
   return (
     <>
-      <header>
-          <Header />
-      </header>
+      <Header />
       <main>
-          <Outlet />
+        <Outlet />
       </main>
       <footer>
-        <p>Footer</p>
+        Footer
       </footer>
     </>
   );
-}
+};
 
 export default RootLayout;

@@ -2,9 +2,25 @@
     content: none;
 }
 
+header {
+    z-index: 20;
+}
+
+.header-container {
+    padding: 20px 40px;
+}
 
 header nav ul{
     display: flex;
     gap: 20px;
     padding: 0px;
+    margin: 0px;
+}
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(252, 138, 138);
+    box-sizing: border-box;
+
 }
