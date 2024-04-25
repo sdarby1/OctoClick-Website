@@ -4,16 +4,16 @@ import PauseIcon from '../images/icons/pause-icon.svg'; // Pfad anpassen
 
 const videoData = [
   { 
-    src: "../src/videos/start.mp4", 
-    poster: "../src/images/thumbnail/thumbnail.png", // Thumbnail nur für das erste Video
+    src: "/videos/start.mp4", 
+    poster: "/images/thumbnail/thumbnail.png", // Thumbnail nur für das erste Video
     choices: [{ text: "Wahl 1", nextIndex: 1 }, { text: "Wahl 2", nextIndex: 2 }]
   },
-  { src: "../src/videos/choice1.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
-  { src: "../src/videos/choice2.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
-  { src: "../src/videos/choice1dot1.mp4", choices: [] },
-  { src: "../src/videos/choice1dot2.mp4", choices: [] },
-  { src: "../src/videos/choice2dot1.mp4", choices: [] },
-  { src: "../src/videos/choice2dot2.mp4", choices: [] },
+  { src: "/videos/choice1.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
+  { src: "/videos/choice2.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
+  { src: "/videos/choice1dot1.mp4", choices: [] },
+  { src: "/videos/choice1dot2.mp4", choices: [] },
+  { src: "/videos/choice2dot1.mp4", choices: [] },
+  { src: "/videos/choice2dot2.mp4", choices: [] },
 ];
 
 const CustomVideoPlayer = () => {
@@ -78,17 +78,35 @@ const CustomVideoPlayer = () => {
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
     if (element) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      }
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) { // Safari
+            element.webkitRequestFullscreen();
+        } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+        }
+        setIsFullScreen(true); // Aktualisiere den Zustand, um anzuzeigen, dass du jetzt im Vollbildmodus bist
     }
-  };
+};
 
-  const exitFullScreen = () => {
+const exitFullScreen = () => {
     if (document.fullscreenElement) {
-      document.exitFullscreen();
+        document.exitFullscreen();
+        setIsFullScreen(false); // Aktualisiere den Zustand, nachdem der Vollbildmodus beendet wurde
+    } else if (document.webkitFullscreenElement) { // Safari
+        document.webkitExitFullscreen();
+        setIsFullScreen(false);
+    } else if (document.mozFullScreenElement) { // Firefox
+        document.mozCancelFullScreen();
+        setIsFullScreen(false);
+    } else if (document.msFullscreenElement) { // IE/Edge
+        document.msExitFullscreen();
+        setIsFullScreen(false);
     }
-  };
+};
+
 
   const handleVolumeChange = (event) => {
     const volume = parseFloat(event.target.value);
