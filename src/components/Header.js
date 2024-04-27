@@ -9,7 +9,7 @@ const Header = () => {
     <header className={isHome ? 'hero-header' : 'standard-header'}>
       {isHome ? (
         <div className="hero-container">
-          <div className="header-container">
+          <div className="header-container home-header">
             <nav>
                 <ul>
                     <li><NavLink to="/">Home</NavLink></li>
@@ -18,6 +18,12 @@ const Header = () => {
                     <li><NavLink to="contact">Contact</NavLink></li>
                 </ul>
             </nav>
+          </div>
+          <div></div>
+          <div class="hero-title-section">
+            <h1>OctoClick</h1>
+            <p>Schau dir jetzt unseren neusten Werbefilm "Filmtitel" an!</p>
+            <button href="/film">Film ansehen</button>
           </div>
         </div>
       ) : (
