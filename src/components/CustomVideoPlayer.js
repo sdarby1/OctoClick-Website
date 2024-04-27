@@ -75,6 +75,31 @@ const CustomVideoPlayer = () => {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      const isFullScreenNow = Boolean(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement || // Safari
+        document.mozFullScreenElement || // Firefox
+        document.msFullscreenElement // IE/Edge
+      );
+  
+      setIsFullScreen(isFullScreenNow);
+    };
+  
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange); // Safari
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange); // Firefox
+    document.addEventListener('MSFullscreenChange', handleFullScreenChange); // IE/Edge
+  
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullScreenChange);
+    };
+  }, []);
+
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
     if (element) {
