@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import PlayIcon from '../images/icons/play-icon.svg';
 import PauseIcon from '../images/icons/pause-icon.svg'; 
+import FullscreenIcon from '../images/icons/fullscreen.svg';
+import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
 
 const videoData = [
   { 
@@ -188,7 +190,7 @@ const exitFullScreen = () => {
         ))}
       </div>
       <button className='fullscreen-btn' onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
-        {isFullScreen ? 'Exit Full Screen' : 'Go Full Screen'}
+        {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
       </button>
       <div className="progress">
         {formatTime(progress)} / {formatTime(duration)}
