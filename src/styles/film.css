@@ -120,6 +120,10 @@
 }
 
 
+.film {
+  max-width: 100%;
+}  
+
 /* .video-container:hover .video-controls {
     display: block;
 } */
