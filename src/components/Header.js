@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import HeaderNavigation from './HeaderNavigation';
 
 const Header = () => {
   const location = useLocation();
@@ -10,14 +11,8 @@ const Header = () => {
       {isHome ? (
         <div className="hero-container">
           <div className="header-container home-header">
-            <nav>
-                <ul>
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="film">Film</NavLink></li>
-                    <li><NavLink to="about">About</NavLink></li>
-                    <li><NavLink to="contact">Contact</NavLink></li>
-                </ul>
-            </nav>
+            <Link to=""><img src="" alt="logo" /></Link>
+            <HeaderNavigation />
           </div>
           <div></div>
           <div class="hero-title-section">
@@ -29,14 +24,8 @@ const Header = () => {
       ) : (
         <div>
           <div className="header-container">
-            <nav>
-                <ul>
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="film">Film</NavLink></li>
-                    <li><NavLink to="about">About</NavLink></li>
-                    <li><NavLink to="contact">Contact</NavLink></li>
-                </ul>
-            </nav>
+            <Link to=""><img src="" alt="logo" /></Link>
+            <HeaderNavigation />
           </div>
         </div>
       )}
