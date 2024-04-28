@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/header.css';
 import './styles/film.css';
+import './styles/index.css';
 
 
 

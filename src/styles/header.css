@@ -122,6 +122,12 @@ h1 {
       .hamburger-menu {
         display: flex;
       }
+
+      .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } 
   }
   
   
