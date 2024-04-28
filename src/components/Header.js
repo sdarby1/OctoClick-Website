@@ -18,7 +18,7 @@ const Header = () => {
           <div class="hero-title-section">
             <h1>OctoClick</h1>
             <p>Schau dir jetzt unseren neusten Werbefilm "Filmtitel" an!</p>
-            <button href="/film">Film ansehen</button>
+            <Link to="/film">Film ansehen</Link>
           </div>
         </div>
       ) : (
