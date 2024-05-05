@@ -27,10 +27,10 @@ const HeaderNavigation = () => {
     <>
      <nav className={isOpen ? "open" : ""}>
         <ul>
-            <li><NavLink to="/" onClick={() => setIsOpen(false)}>Home</NavLink></li>
-            <li><NavLink to="/film" onClick={() => setIsOpen(false)}>Film</NavLink></li>
-            <li><NavLink to="/about" onClick={() => setIsOpen(false)}>About</NavLink></li>
-            <li><NavLink to="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink></li>
+            <li><NavLink className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text="Home">Home</NavLink></li>
+            <li><NavLink className="nav-btn" to="/film" onClick={() => setIsOpen(false)} data-text="Film">Film</NavLink></li>
+            <li><NavLink className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text="About">About</NavLink></li>
+            <li><NavLink className="nav-btn" to="/contact" onClick={() => setIsOpen(false)} data-text="Contact">Contact</NavLink></li>
         </ul>
      </nav>
      {isMobile && (

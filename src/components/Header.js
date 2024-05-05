@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import HeaderNavigation from './HeaderNavigation';
+import ScrollToContentButton from './ScrollDownBtn';
 
 const Header = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const Header = () => {
             <p>Schau dir jetzt unseren neusten Werbefilm "Filmtitel" an!</p>
             <Link to="/film">Film ansehen</Link>
           </div>
+          <ScrollToContentButton />
         </div>
       ) : (
         <div>
