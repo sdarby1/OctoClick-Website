@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import LightMode from './LightMode';
 
 const HeaderNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,7 @@ const HeaderNavigation = () => {
     <>
      <nav className={isOpen ? "open" : ""}>
         <ul>
+        <LightMode />
             <li><NavLink className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text="Home">Home</NavLink></li>
             <li><NavLink className="nav-btn" to="/film" onClick={() => setIsOpen(false)} data-text="Film">Film</NavLink></li>
             <li><NavLink className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text="About">About</NavLink></li>

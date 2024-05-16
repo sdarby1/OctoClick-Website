@@ -2,7 +2,6 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import HeaderNavigation from './HeaderNavigation';
 import ScrollToContentButton from './ScrollDownBtn';
-import LightMode from './LightMode';
 
 const Header = () => {
   const location = useLocation();
@@ -14,7 +13,6 @@ const Header = () => {
         <div className="hero-container">
           <div className="header-container home-header">
             <Link to=""><img src="" alt="logo" /></Link>
-            <LightMode />
             <HeaderNavigation />
           </div>
           <div></div>
@@ -29,7 +27,6 @@ const Header = () => {
         <div>
           <div className="header-container">
             <Link to=""><img src="" alt="logo" /></Link>
-            <LightMode />
             <HeaderNavigation />
           </div>
         </div>
