@@ -4,10 +4,16 @@ import sunIcon from '../images/icons/light-mode-icon.svg';
 import moonIcon from '../images/icons/dark-mode-icon.svg'; 
 
 function LightMode() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    // Überprüfen, ob ein Theme im Local Storage gespeichert ist
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme : 'dark';
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    // Speichern des aktuellen Themes im Local Storage
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
