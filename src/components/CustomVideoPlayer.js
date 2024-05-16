@@ -6,13 +6,13 @@ import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
 
 const videoData = [
   { 
-    src: "/videos/start.mp4", 
+    src: "/videos/first.mp4", 
     poster: "/images/thumbnail/thumbnail.png", 
     choices: [{ text: "Wahl 1", nextIndex: 1 }, { text: "Wahl 2", nextIndex: 2 }]
   },
-  { src: "/videos/choice1.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
+  { src: "/videos/second.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
   { src: "/videos/choice2.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
-  { src: "/videos/choice1dot1.mp4", choices: [] },
+  { src: "/videos/third.mp4", choices: [] },
   { src: "/videos/choice1dot2.mp4", choices: [] },
   { src: "/videos/choice2dot1.mp4", choices: [] },
   { src: "/videos/choice2dot2.mp4", choices: [] },
@@ -167,6 +167,9 @@ const exitFullScreen = () => {
         src={videoData[currentIndex].src} 
         poster={currentIndex === 0 ? videoData[currentIndex].poster : undefined}
         onEnded={handleVideoEnd} 
+        controls={false} // Standard-Steuerungen deaktivieren
+        playsInline // Verhindert Vollbild-Abspielen auf iOS
+        webkit-playsinline="true" // Ältere iOS-Versionen
       />
       <div className="video-controls">
         <button onClick={togglePlayPause} className='play-btn'>

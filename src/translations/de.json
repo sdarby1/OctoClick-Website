@@ -1,0 +1,14 @@
+{
+   "navbar": {
+    "home": "Home",
+    "film": "Film",
+    "about": "Über uns",
+    "contact": "Kontakt"
+   },
+   
+   "hero": {
+    "title": "Werbefilm",
+    "desc": "Schau dir jetzt unseren neusten Werbefilm 'Filmtitel' an!",
+    "link": "Film ansehen"
+   }
+}

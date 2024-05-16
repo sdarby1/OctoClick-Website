@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import LightMode from './LightMode';
+import LanguageSwitch from './LanguageSwitch';
+import { useTranslation } from 'react-i18next';
+
+
 
 const HeaderNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 780);
+  const { t } = useTranslation();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,11 +34,12 @@ const HeaderNavigation = () => {
     <>
      <nav className={isOpen ? "open" : ""}>
         <ul>
+        <LanguageSwitch />
         <LightMode />
-            <li><NavLink className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text="Home">Home</NavLink></li>
-            <li><NavLink className="nav-btn" to="/film" onClick={() => setIsOpen(false)} data-text="Film">Film</NavLink></li>
-            <li><NavLink className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text="About">About</NavLink></li>
-            <li><NavLink className="nav-btn" to="/contact" onClick={() => setIsOpen(false)} data-text="Contact">Contact</NavLink></li>
+            <li><NavLink className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text={t('navbar.home')}>{t('navbar.home')}</NavLink></li>
+            <li><NavLink className="nav-btn" to="/film" onClick={() => setIsOpen(false)} data-text={t('navbar.film')}>{t('navbar.film')}</NavLink></li>
+            <li><NavLink className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text={t('navbar.about')}>{t('navbar.about')}</NavLink></li>
+            <li><NavLink className="nav-btn" to="/contact" onClick={() => setIsOpen(false)} data-text={t('navbar.contact')}>{t('navbar.contact')}</NavLink></li>
         </ul>
      </nav>
      {isMobile && (

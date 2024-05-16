@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="28" viewBox="0 0 44 28">
+  <g id="de-icon" transform="translate(-3463 608)">
+    <rect id="Rechteck_40" data-name="Rechteck 40" width="44" height="28" rx="4" transform="translate(3463 -608)" fill="#fff"/>
+    <path id="Rechteck_41" data-name="Rechteck 41" d="M4,0H40a4,4,0,0,1,4,4V9a0,0,0,0,1,0,0H0A0,0,0,0,1,0,9V4A4,4,0,0,1,4,0Z" transform="translate(3463 -608)"/>
+    <path id="Rechteck_42" data-name="Rechteck 42" d="M0,0H44a0,0,0,0,1,0,0V5a4,4,0,0,1-4,4H4A4,4,0,0,1,0,5V0A0,0,0,0,1,0,0Z" transform="translate(3463 -589)" fill="#ffda43"/>
+    <rect id="Rechteck_43" data-name="Rechteck 43" width="44" height="10" transform="translate(3463 -599)" fill="#d80027"/>
+  </g>
+</svg>
