@@ -16,9 +16,10 @@ function LightMode() {
 
   return (
     <div>
-      <button onClick={toggleTheme} style={{ backgroundColor: 'var(--primary-color)', color: 'var(--text-color)', padding: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-        Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode
-      </button>
+      <label className="switch">
+        <input type="checkbox" onChange={toggleTheme} checked={theme === 'light'} />
+        <span className="slider"></span>
+      </label>
     </div>
   );
 }
