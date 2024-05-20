@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useScrollAnimation from '../hooks/UseScrollAnimation';
 
 const InfoSection = () => {
   const sectionVariants = {
@@ -16,24 +17,29 @@ const InfoSection = () => {
     },
   };
 
+  const [ref1, controls1] = useScrollAnimation();
+  const [ref2, controls2] = useScrollAnimation();
+  const [ref3, controls3] = useScrollAnimation();
+  const [ref4, controls4] = useScrollAnimation();
+
   return (
     <div>
       <div className="info-section">
         <motion.div
           className="info-image-container"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
+          animate={controls1}
           custom="right"
+          variants={sectionVariants}
+          ref={ref1}
         ></motion.div>
         <motion.div
           className="info-text-container"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
+          animate={controls2}
           custom="left"
+          variants={sectionVariants}
+          ref={ref2}
         >
           <h2>Headline Info</h2>
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr...</p>
@@ -43,10 +49,10 @@ const InfoSection = () => {
         <motion.div
           className="info-text-container"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
+          animate={controls3}
           custom="right"
+          variants={sectionVariants}
+          ref={ref3}
         >
           <h2>Headline Info</h2>
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr...</p>
@@ -54,10 +60,10 @@ const InfoSection = () => {
         <motion.div
           className="info-image-container"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
+          animate={controls4}
           custom="left"
+          variants={sectionVariants}
+          ref={ref4}
         ></motion.div>
       </div>
     </div>
