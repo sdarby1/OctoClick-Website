@@ -128,10 +128,23 @@
     display: block;
 } */
 
-.film-section {
+.film-section-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.film-section {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+}
+
+@media (max-width: 780px) {
+  .film-section {
+    width: 100%;
+  }
 }
