@@ -191,8 +191,9 @@ h1 {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: right 0.3s ease; /* Animiert das 'right' Property */
+        transition: all 0.3s ease; /* Animiert das 'right' Property */
         z-index: 1000;
+        border-radius: 90%;
       }
 
       header nav ul {
@@ -202,6 +203,7 @@ h1 {
       /* Wenn das Menü geöffnet ist */
       header nav.open {
         right: 0; /* Bewegt das Menü ins Bild */
+        border-radius: 0%;
       }
     
       .hamburger-menu {
