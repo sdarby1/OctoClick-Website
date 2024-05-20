@@ -1,14 +1,54 @@
+/* Ausgangszustand für die Animationen */
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.hidden.from-left {
+  transform: translateX(-100%);
+}
+
+.hidden.from-right {
+  transform: translateX(100%);
+}
+
+/* Endzustand nach der Animation */
+.visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Grid-Layout für die Info-Section */
 .info-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 0px 40px;
-    font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 0 40px;
+  font-size: 20px;
+  overflow: hidden;
 }
 
 .info-image-container {
-    background-image: url("https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-    background-size: cover;
-    background-position: center center;
-    min-height: 400px;
+  background-image: url("https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: cover;
+  background-position: center center;
+  min-height: 400px;
+}
+
+/* Responsives Design */
+@media (max-width: 780px) {
+  .info-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hidden.from-left,
+  .hidden.from-right {
+    transform: translateX(-100%);
+  }
+
+  .visible.from-left,
+  .visible.from-right {
+    transform: translateX(0);
+  }
 }

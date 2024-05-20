@@ -19,7 +19,7 @@ const Header = () => {
             <HeaderNavigation />
           </div>
           <div></div>
-          <div class="hero-title-section">
+          <div className="hero-title-section">
             <h1>{t('hero.title')}</h1>
             <p>{t('hero.desc')}</p>
             <Link to="/film" className="link-to-film">{t('hero.link')}</Link>
