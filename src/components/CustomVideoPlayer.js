@@ -21,12 +21,30 @@ const videoData = [
 const CustomVideoPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const videoContainerRef = useRef(null);
   const [showChoices, setShowChoices] = useState(false);
-  const [progress, setProgress] = useState(0); 
-  const [duration, setDuration] = useState(0); 
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const canvasRef = useRef(null);
+  const videoRef = useRef(null);
+  const videoContainerRef = useRef(null);
+  const posterRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (isFullScreen) {
+        adjustCanvasSize();
+      } else {
+        resetCanvasSize();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isFullScreen]);
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -34,6 +52,32 @@ const CustomVideoPlayer = () => {
       setIsPlaying(true);
     }
   }, [currentIndex]);
+
+  useEffect(() => {
+    const renderCanvas = () => {
+      if (canvasRef.current && videoRef.current) {
+        const ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
+        requestAnimationFrame(renderCanvas);
+      }
+    };
+
+    if (isPlaying) {
+      requestAnimationFrame(renderCanvas);
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (!isPlaying && posterRef.current) {
+      const ctx = canvasRef.current.getContext('2d');
+      const img = new Image();
+      img.src = posterRef.current.src;
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height);
+      };
+    }
+  }, [currentIndex, isPlaying]);
 
   const togglePlayPause = () => {
     if (videoRef.current) {
@@ -54,22 +98,17 @@ const CustomVideoPlayer = () => {
 
   const handleChoice = (nextIndex) => {
     setCurrentIndex(nextIndex);
+    setShowChoices(false);
   };
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const timeLeft = videoRef.current.duration - videoRef.current.currentTime;
-      setShowChoices(timeLeft <= 100);
+      setShowChoices(timeLeft <= 10);
+      setProgress(videoRef.current.currentTime);
+      setDuration(videoRef.current.duration);
     }
   };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      return () => video.removeEventListener('timeupdate', handleTimeUpdate);
-    }
-  }, []);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -85,15 +124,20 @@ const CustomVideoPlayer = () => {
         document.mozFullScreenElement || // Firefox
         document.msFullscreenElement // IE/Edge
       );
-  
+
       setIsFullScreen(isFullScreenNow);
+      if (isFullScreenNow) {
+        adjustCanvasSize();
+      } else {
+        resetCanvasSize();
+      }
     };
-  
+
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullScreenChange); // Safari
     document.addEventListener('mozfullscreenchange', handleFullScreenChange); // Firefox
     document.addEventListener('MSFullscreenChange', handleFullScreenChange); // IE/Edge
-  
+
     return () => {
       document.removeEventListener('fullscreenchange', handleFullScreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
@@ -102,38 +146,60 @@ const CustomVideoPlayer = () => {
     };
   }, []);
 
+  const adjustCanvasSize = () => {
+    if (canvasRef.current && videoRef.current) {
+      const videoAspectRatio = videoRef.current.videoWidth / videoRef.current.videoHeight;
+      const windowAspectRatio = window.innerWidth / window.innerHeight;
+
+      if (windowAspectRatio > videoAspectRatio) {
+        canvasRef.current.height = window.innerHeight;
+        canvasRef.current.width = window.innerHeight * videoAspectRatio;
+      } else {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerWidth / videoAspectRatio;
+      }
+      canvasRef.current.style.width = '100%';
+      canvasRef.current.style.height = '100%';
+    }
+  };
+
+  const resetCanvasSize = () => {
+    if (canvasRef.current) {
+      canvasRef.current.width = 640;
+      canvasRef.current.height = 360;
+      canvasRef.current.style.width = '';
+      canvasRef.current.style.height = '';
+    }
+  };
+
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
     if (element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.webkitRequestFullscreen) { // Safari
-            element.webkitRequestFullscreen();
-        } else if (element.mozRequestFullScreen) { // Firefox
-            element.mozRequestFullScreen();
-        } else if (element.msRequestFullscreen) { // IE/Edge
-            element.msRequestFullscreen();
-        }
-        setIsFullScreen(true); // Aktualisiere den Zustand, um anzuzeigen, dass du jetzt im Vollbildmodus bist
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.webkitRequestFullscreen) { // Safari
+        element.webkitRequestFullscreen();
+      } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen();
+      } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+      }
+      setIsFullScreen(true);
     }
-};
+  };
 
-const exitFullScreen = () => {
+  const exitFullScreen = () => {
     if (document.fullscreenElement) {
-        document.exitFullscreen();
-        setIsFullScreen(false); // Aktualisiere den Zustand, nachdem der Vollbildmodus beendet wurde
+      document.exitFullscreen();
     } else if (document.webkitFullscreenElement) { // Safari
-        document.webkitExitFullscreen();
-        setIsFullScreen(false);
+      document.webkitExitFullscreen();
     } else if (document.mozFullScreenElement) { // Firefox
-        document.mozCancelFullScreen();
-        setIsFullScreen(false);
+      document.mozCancelFullScreen();
     } else if (document.msFullscreenElement) { // IE/Edge
-        document.msExitFullscreen();
-        setIsFullScreen(false);
+      document.msExitFullscreen();
     }
-};
-
+    setIsFullScreen(false);
+  };
 
   const handleVolumeChange = (event) => {
     const volume = parseFloat(event.target.value);
@@ -143,33 +209,37 @@ const exitFullScreen = () => {
   };
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const updateProgress = () => {
-        setProgress(video.currentTime);
-        setDuration(video.duration);
-      };
-
-      video.addEventListener('timeupdate', updateProgress);
-      video.addEventListener('loadedmetadata', updateProgress);
-      return () => {
-        video.removeEventListener('timeupdate', updateProgress);
-        video.removeEventListener('loadedmetadata', updateProgress);
-      };
+    if (isFullScreen) {
+      adjustCanvasSize();
+    } else {
+      resetCanvasSize();
     }
-  }, []);
+  }, [currentIndex]);
 
   return (
     <div ref={videoContainerRef} className={`video-container ${isFullScreen ? 'fullscreen' : ''}`}>
+      <canvas ref={canvasRef} className="video-canvas" width="640" height="360"></canvas>
       <video 
-        className="film"
         ref={videoRef} 
         src={videoData[currentIndex].src} 
-        poster={currentIndex === 0 ? videoData[currentIndex].poster : undefined}
         onEnded={handleVideoEnd} 
-        controls={false} // Standard-Steuerungen deaktivieren
-        playsInline // Verhindert Vollbild-Abspielen auf iOS
-        webkit-playsinline="true" // Ältere iOS-Versionen
+        onTimeUpdate={handleTimeUpdate} 
+        style={{ display: 'none' }} 
+        onLoadedMetadata={() => {
+          setDuration(videoRef.current.duration);
+          setProgress(videoRef.current.currentTime);
+          if (isFullScreen) {
+            adjustCanvasSize();
+          } else {
+            resetCanvasSize();
+          }
+        }}
+      />
+      <img 
+        ref={posterRef} 
+        src={videoData[currentIndex].poster} 
+        alt="Video Poster" 
+        style={{ display: 'none' }}
       />
       <div className="video-controls">
         <button onClick={togglePlayPause} className='play-btn'>
