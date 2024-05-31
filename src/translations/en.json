@@ -7,8 +7,10 @@
     },
     
     "hero": {
-     "title": "Advertising film",
-     "desc": "Watch our latest advertising film 'film title' now!",
-     "link": "Watch film"
+     "title": "We are OctoClick",
+     "desc1": "Interactivity redefined",
+     "desc2": "Creativity meets technology",
+     "desc3": "With innovative solutions",
+     "link": "Watch new film"
     }
  }

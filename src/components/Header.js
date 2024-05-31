@@ -3,6 +3,9 @@ import { useLocation, Link } from 'react-router-dom';
 import HeaderNavigation from './HeaderNavigation';
 import ScrollToContentButton from './ScrollDownBtn';
 import { useTranslation } from 'react-i18next';
+import LightMode from './LightMode';
+import LanguageSwitch from './LanguageSwitch';
+import HeroDescription from './HeroDescription';
 
 
 const Header = () => {
@@ -15,22 +18,34 @@ const Header = () => {
       {isHome ? (
         <div className="hero-container">
           <div className="header-container home-header">
-            <Link to=""><img src="" alt="logo" /></Link>
+            <div className="website-functions-container">
+              <LightMode />
+              <LanguageSwitch />
+            </div>
             <HeaderNavigation />
+            <div className="social-media-icon-container">
+
+            </div>
           </div>
-          <div></div>
           <div className="hero-title-section">
             <h1>{t('hero.title')}</h1>
-            <p>{t('hero.desc')}</p>
+            <HeroDescription />
             <Link to="/film" className="link-to-film">{t('hero.link')}</Link>
           </div>
+          <div></div>
           <ScrollToContentButton />
         </div>
       ) : (
         <div>
           <div className="header-container">
-            <Link to=""><img src="" alt="logo" /></Link>
+          <div className="website-functions-container">
+              <LightMode />
+              <LanguageSwitch />
+            </div>
             <HeaderNavigation />
+            <div className="social-media-icon-container">
+
+            </div>
           </div>
         </div>
       )}

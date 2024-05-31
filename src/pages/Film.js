@@ -5,7 +5,7 @@ const Film = () => {
     <div className="film-section-container">
       <div className="film-section">
         <div className="interactive-video-container">
-            <h1>Film</h1>
+            <h2>Film</h2>
             <CustomVideoPlayer />
         </div>
       </div>

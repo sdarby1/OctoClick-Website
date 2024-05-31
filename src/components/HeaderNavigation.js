@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import LightMode from './LightMode';
 import LanguageSwitch from './LanguageSwitch';
 import { useTranslation } from 'react-i18next';
@@ -34,10 +34,9 @@ const HeaderNavigation = () => {
     <>
      <nav className={isOpen ? "open" : ""}>
         <ul>
-        <LanguageSwitch />
-        <LightMode />
             <li><NavLink activeclassname="active" className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text={t('navbar.home')}>{t('navbar.home')}</NavLink></li>
             <li><NavLink activeclassname="active" className="nav-btn" to="/film" onClick={() => setIsOpen(false)} data-text={t('navbar.film')}>{t('navbar.film')}</NavLink></li>
+            <Link to=""><img src="" alt="logo" /></Link>
             <li><NavLink activeclassname="active" className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text={t('navbar.about')}>{t('navbar.about')}</NavLink></li>
             <li><NavLink activeclassname="active" className="nav-btn" to="/contact" onClick={() => setIsOpen(false)} data-text={t('navbar.contact')}>{t('navbar.contact')}</NavLink></li>
         </ul>

@@ -8,6 +8,7 @@ import './styles/header.css';
 import './styles/film.css';
 import './styles/index.css';
 import './styles/home.css';
+import './styles/typo.css';
 
 
 

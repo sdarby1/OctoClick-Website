@@ -7,7 +7,7 @@ header {
 }
 
 .header-container {
-    padding: 20px 40px;
+    padding: 20px 0px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -39,16 +39,15 @@ header nav ul{
     background-size: cover; */
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     margin-bottom: 20px;
 }
 
 .hero-title-section {
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    gap: 20px;
 }
 
 h1 {
@@ -66,6 +65,13 @@ h1 {
 .scroll-down-btn img {
   height: 50px;
   cursor: pointer;
+}
+
+.website-functions-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 
@@ -171,12 +177,47 @@ h1 {
     padding: 14px 24px;
     border-radius: 5px;
     transition: all 0.4s;
+    width: fit-content;
   }
 
   .link-to-film:hover {
     background-color: #007f61;
   }
 
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary-color); }
+  }
+  
+  .typewriter-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 2em; /* Mindesthöhe für den Container */
+    height: auto;
+    overflow: hidden;
+    width: fit-content;
+    padding-right: 20px;
+    position: relative;
+  }
+  
+  .typewriter {
+    display: inline-block;
+    overflow: hidden; /* Verborgener Überlauf */
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    border-right: .15em solid var(--primary-color); /* Schreibmaschinen-Cursor */
+    animation: blink-caret .75s
+  }
+  
+  
+  
+  
 
 
 @media (max-width: 780px) {
