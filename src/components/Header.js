@@ -24,7 +24,8 @@ const Header = () => {
             </div>
             <HeaderNavigation />
             <div className="social-media-icon-container">
-
+              <img src="/images/icons/tiktok-icon.svg" alt="Tik Tok"/>
+              <img src="/images/icons/instagram-icon.svg" alt="Instagram"/>
             </div>
           </div>
           <div className="hero-title-section">
@@ -44,7 +45,8 @@ const Header = () => {
             </div>
             <HeaderNavigation />
             <div className="social-media-icon-container">
-
+              <img src="/images/icons/tiktok-icon.svg" alt="Tik Tok"/>
+              <img src="/images/icons/instagram-icon.svg" alt="Instagram"/>
             </div>
           </div>
         </div>
