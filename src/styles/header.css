@@ -276,13 +276,22 @@ h1 {
         gap: 40px;
         align-items: center;
         justify-content: center;
-      } 
+      }
+      
+      .hero-title-section {
+        align-items: center;
+        text-align: center;
+      }
 
       .scroll-down-btn {
         position: none;
         left: 50%;
         bottom: 80px;
         transform: translateX(-50%);
+      }
+
+      .social-media-icon-container {
+        display: none;
       }
   }
   

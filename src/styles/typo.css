@@ -16,6 +16,16 @@ h1 {
     font-size: 5em;
     margin: 0px;
     font-family: VarelaRound;
+    position: relative;
+}
+
+h1::after {
+    position: absolute;
+    left: 0;
+    content: attr(data-text);
+    background: linear-gradient(90deg, rgba(0,167,127,1) 0%, rgba(0,212,255,0) 100%);
+    -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
 }
 
 h2 {
@@ -23,6 +33,16 @@ h2 {
     color: var(--primary-color);
     margin: 0px;
     font-family: VarelaRound;
+}
+
+p {
+    line-height: 30px;
+}
+
+@media (max-width: 1424px) {
+    h1 {
+        font-size: 4em;
+    }
 }
 
 @media (max-width: 780px) {

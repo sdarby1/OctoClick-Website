@@ -29,7 +29,7 @@ const Header = () => {
             </div>
           </div>
           <div className="hero-title-section">
-            <h1>{t('hero.title')}</h1>
+            <h1 data-text={t('hero.title')}>{t('hero.title')}</h1>
             <HeroDescription />
             <Link to="/film" className="link-to-film">{t('hero.link')}</Link>
           </div>
