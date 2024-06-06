@@ -39,7 +39,7 @@ p {
     line-height: 30px;
 }
 
-@media (max-width: 1424px) {
+@media (max-width: 1600px) {
     h1 {
         font-size: 4em;
     }

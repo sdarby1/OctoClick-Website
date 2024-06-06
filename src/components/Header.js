@@ -24,7 +24,7 @@ const Header = () => {
             </div>
             <HeaderNavigation />
             <div className="social-media-icon-container">
-              <img src="/images/icons/tiktok-icon.svg" alt="Tik Tok"/>
+            <Link to="https://www.tiktok.com/@octoclick"><img src="/images/icons/tiktok-icon.svg" alt="Tik Tok"/></Link>
               <img src="/images/icons/instagram-icon.svg" alt="Instagram"/>
             </div>
           </div>
