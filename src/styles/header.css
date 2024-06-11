@@ -14,6 +14,7 @@ header {
     justify-content: space-between;
     width: 100%;
     position: relative;
+    z-index: 1000;
 }
 
 .home-header {
@@ -213,7 +214,7 @@ h1 {
   
   @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: var(--primary-color); }
+    50% { border-color: var(--text-color); }
   }
   
   .typewriter-container {
@@ -232,7 +233,7 @@ h1 {
     display: inline-block;
     overflow: hidden; /* Verborgener Überlauf */
     white-space: nowrap; /* Verhindert Zeilenumbruch */
-    border-right: .15em solid var(--primary-color); /* Schreibmaschinen-Cursor */
+    border-right: .15em solid var(--text-color); /* Schreibmaschinen-Cursor */
     animation: blink-caret .75s
   }
   

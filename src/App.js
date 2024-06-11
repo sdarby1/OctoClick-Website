@@ -6,9 +6,11 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Film from './pages/Film';
 import NotFound from './pages/404';
+import ClickEffectProvider from './components/ClickEffectProvider';
 
 function App() {
   return (
+    <ClickEffectProvider>
     <Router>
       <Routes>
         <Route path="/" element={<RootLayout />}>
@@ -20,6 +22,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </ClickEffectProvider> 
   );
 }
 

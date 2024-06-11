@@ -21,30 +21,17 @@ const videoData = [
 const CustomVideoPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const [showChoices, setShowChoices] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const canvasRef = useRef(null);
   const videoRef = useRef(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const videoContainerRef = useRef(null);
-  const posterRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (isFullScreen) {
-        adjustCanvasSize();
-      } else {
-        resetCanvasSize();
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isFullScreen]);
+  const [showChoices, setShowChoices] = useState(false);
+  const [progress, setProgress] = useState(0); 
+  const [duration, setDuration] = useState(0); 
+  const [isLoading, setIsLoading] = useState(false); 
+  const [controlsVisible, setControlsVisible] = useState(true);
+  const [timer, setTimer] = useState(0); // Timer state
+  const controlsTimeoutRef = useRef(null);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -52,32 +39,6 @@ const CustomVideoPlayer = () => {
       setIsPlaying(true);
     }
   }, [currentIndex]);
-
-  useEffect(() => {
-    const renderCanvas = () => {
-      if (canvasRef.current && videoRef.current) {
-        const ctx = canvasRef.current.getContext('2d');
-        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
-        requestAnimationFrame(renderCanvas);
-      }
-    };
-
-    if (isPlaying) {
-      requestAnimationFrame(renderCanvas);
-    }
-  }, [isPlaying]);
-
-  useEffect(() => {
-    if (!isPlaying && posterRef.current) {
-      const ctx = canvasRef.current.getContext('2d');
-      const img = new Image();
-      img.src = posterRef.current.src;
-      img.onload = () => {
-        ctx.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height);
-      };
-    }
-  }, [currentIndex, isPlaying]);
 
   const togglePlayPause = () => {
     if (videoRef.current) {
@@ -94,21 +55,58 @@ const CustomVideoPlayer = () => {
   const handleVideoEnd = () => {
     const hasChoices = videoData[currentIndex].choices.length > 0;
     setShowChoices(hasChoices);
+    if (hasChoices) {
+      setControlsVisible(false); // Hide controls when choices are shown
+    }
   };
 
   const handleChoice = (nextIndex) => {
+    setIsLoading(true);
     setCurrentIndex(nextIndex);
-    setShowChoices(false);
+    setShowChoices(false); // Hide choices when a new video starts
+    setControlsVisible(true); // Show controls when a new video starts
+    cancelAnimationFrame(timerRef.current); // Clear the timer when a choice is made
+  };
+
+  const updateTimer = (endTime) => {
+    const now = Date.now();
+    const timeLeft = Math.max(0, endTime - now);
+    setTimer(Math.ceil(timeLeft / 1000)); // Convert milliseconds to seconds
+
+    if (timeLeft > 0) {
+      timerRef.current = requestAnimationFrame(() => updateTimer(endTime));
+    }
   };
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
-      const timeLeft = videoRef.current.duration - videoRef.current.currentTime;
-      setShowChoices(timeLeft <= 10);
-      setProgress(videoRef.current.currentTime);
-      setDuration(videoRef.current.duration);
+      const currentTime = videoRef.current.currentTime;
+      const videoDuration = videoRef.current.duration;
+      const timeLeft = videoDuration - currentTime;
+
+      const shouldShowChoices = timeLeft <= 7 && videoData[currentIndex].choices.length > 0;
+      setShowChoices(shouldShowChoices);
+
+      if (shouldShowChoices) {
+        const endTime = Date.now() + timeLeft * 1000;
+        updateTimer(endTime);
+      } else {
+        cancelAnimationFrame(timerRef.current);
+        timerRef.current = null;
+      }
     }
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      return () => {
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+        cancelAnimationFrame(timerRef.current);
+      };
+    }
+  }, [currentIndex]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -124,20 +122,15 @@ const CustomVideoPlayer = () => {
         document.mozFullScreenElement || // Firefox
         document.msFullscreenElement // IE/Edge
       );
-
+  
       setIsFullScreen(isFullScreenNow);
-      if (isFullScreenNow) {
-        adjustCanvasSize();
-      } else {
-        resetCanvasSize();
-      }
     };
-
+  
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullScreenChange); // Safari
     document.addEventListener('mozfullscreenchange', handleFullScreenChange); // Firefox
     document.addEventListener('MSFullscreenChange', handleFullScreenChange); // IE/Edge
-
+  
     return () => {
       document.removeEventListener('fullscreenchange', handleFullScreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
@@ -146,59 +139,36 @@ const CustomVideoPlayer = () => {
     };
   }, []);
 
-  const adjustCanvasSize = () => {
-    if (canvasRef.current && videoRef.current) {
-      const videoAspectRatio = videoRef.current.videoWidth / videoRef.current.videoHeight;
-      const windowAspectRatio = window.innerWidth / window.innerHeight;
-
-      if (windowAspectRatio > videoAspectRatio) {
-        canvasRef.current.height = window.innerHeight;
-        canvasRef.current.width = window.innerHeight * videoAspectRatio;
-      } else {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerWidth / videoAspectRatio;
-      }
-      canvasRef.current.style.width = '100%';
-      canvasRef.current.style.height = '100%';
-    }
-  };
-
-  const resetCanvasSize = () => {
-    if (canvasRef.current) {
-      canvasRef.current.width = 640;
-      canvasRef.current.height = 360;
-      canvasRef.current.style.width = '';
-      canvasRef.current.style.height = '';
-    }
-  };
-
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
     if (element) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.webkitRequestFullscreen) { // Safari
-        element.webkitRequestFullscreen();
-      } else if (element.mozRequestFullScreen) { // Firefox
-        element.mozRequestFullScreen();
-      } else if (element.msRequestFullscreen) { // IE/Edge
-        element.msRequestFullscreen();
-      }
-      setIsFullScreen(true);
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) { // Safari
+            element.webkitRequestFullscreen();
+        } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+        }
+        setIsFullScreen(true); // Aktualisiere den Zustand, um anzuzeigen, dass du jetzt im Vollbildmodus bist
     }
   };
 
   const exitFullScreen = () => {
     if (document.fullscreenElement) {
-      document.exitFullscreen();
+        document.exitFullscreen();
+        setIsFullScreen(false); // Aktualisiere den Zustand, nachdem der Vollbildmodus beendet wurde
     } else if (document.webkitFullscreenElement) { // Safari
-      document.webkitExitFullscreen();
+        document.webkitExitFullscreen();
+        setIsFullScreen(false);
     } else if (document.mozFullScreenElement) { // Firefox
-      document.mozCancelFullScreen();
+        document.mozCancelFullScreen();
+        setIsFullScreen(false);
     } else if (document.msFullscreenElement) { // IE/Edge
-      document.msExitFullscreen();
+        document.msExitFullscreen();
+        setIsFullScreen(false);
     }
-    setIsFullScreen(false);
   };
 
   const handleVolumeChange = (event) => {
@@ -208,40 +178,77 @@ const CustomVideoPlayer = () => {
     }
   };
 
+  const handleVideoLoaded = () => {
+    setIsLoading(false);
+  };
+
+  const showControlsTemporarily = () => {
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    setControlsVisible(true);
+    controlsTimeoutRef.current = setTimeout(() => {
+      setControlsVisible(false);
+    }, 5000); // 5000 ms = 5 seconds
+  };
+
   useEffect(() => {
-    if (isFullScreen) {
-      adjustCanvasSize();
-    } else {
-      resetCanvasSize();
+    const video = videoRef.current;
+    if (video) {
+      const updateProgress = () => {
+        setProgress(video.currentTime);
+        setDuration(video.duration);
+      };
+
+      video.addEventListener('timeupdate', updateProgress);
+      video.addEventListener('loadedmetadata', updateProgress);
+      video.addEventListener('loadeddata', handleVideoLoaded);
+      return () => {
+        video.removeEventListener('timeupdate', updateProgress);
+        video.removeEventListener('loadedmetadata', updateProgress);
+        video.removeEventListener('loadeddata', handleVideoLoaded);
+      };
     }
   }, [currentIndex]);
 
+  useEffect(() => {
+    const handleMouseMove = () => {
+      showControlsTemporarily();
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.code === 'Space' && !showChoices) {
+        event.preventDefault();
+        togglePlayPause();
+      }
+    };
+
+    const videoContainer = videoContainerRef.current;
+    if (videoContainer) {
+      videoContainer.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        videoContainer.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [showChoices]);
+
   return (
     <div ref={videoContainerRef} className={`video-container ${isFullScreen ? 'fullscreen' : ''}`}>
-      <canvas ref={canvasRef} className="video-canvas" width="640" height="360"></canvas>
+      {isLoading && <div className="loading-placeholder"></div>}
       <video 
+        className={`film ${isLoading ? 'hidden' : ''}`}
         ref={videoRef} 
         src={videoData[currentIndex].src} 
+        poster={currentIndex === 0 ? videoData[currentIndex].poster : undefined}
         onEnded={handleVideoEnd} 
-        onTimeUpdate={handleTimeUpdate} 
-        style={{ display: 'none' }} 
-        onLoadedMetadata={() => {
-          setDuration(videoRef.current.duration);
-          setProgress(videoRef.current.currentTime);
-          if (isFullScreen) {
-            adjustCanvasSize();
-          } else {
-            resetCanvasSize();
-          }
-        }}
+        onLoadedData={handleVideoLoaded}
+        controls={false} // Standard-Steuerungen deaktivieren
+        playsInline // Verhindert Vollbild-Abspielen auf iOS
+        webkit-playsinline="true" // Ältere iOS-Versionen
       />
-      <img 
-        ref={posterRef} 
-        src={videoData[currentIndex].poster} 
-        alt="Video Poster" 
-        style={{ display: 'none' }}
-      />
-      <div className="video-controls">
+      <div className={`video-controls ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         <button onClick={togglePlayPause} className='play-btn'>
           {isPlaying ? <img src={PauseIcon} alt="Pause" /> : <img src={PlayIcon} alt="Play" />}
         </button>
@@ -256,16 +263,21 @@ const CustomVideoPlayer = () => {
         />
       </div>
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
-        {showChoices && videoData[currentIndex].choices.map((choice, index) => (
-          <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
-            {choice.text}
-          </button>
-        ))}
+        {showChoices && (
+          <>
+            <div className="timer">{timer}</div>
+            {videoData[currentIndex].choices.map((choice, index) => (
+              <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
+                {choice.text}
+              </button>
+            ))}
+          </>
+        )}
       </div>
-      <button className='fullscreen-btn' onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
+      <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
         {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
       </button>
-      <div className="progress">
+      <div className={`progress ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         {formatTime(progress)} / {formatTime(duration)}
         <input 
           type="range" 
