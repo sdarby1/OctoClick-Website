@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Film from './pages/Film';
 import NotFound from './pages/404';
 import ClickEffectProvider from './components/ClickEffectProvider';
+import CustomVideoPlayer from './components/CustomVideoPlayer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="film" element={<Film />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="/videoplayer" element={<CustomVideoPlayer/>} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
