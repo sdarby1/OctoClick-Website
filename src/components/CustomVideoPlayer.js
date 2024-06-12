@@ -3,6 +3,7 @@ import PlayIcon from '../images/icons/play-icon.svg';
 import PauseIcon from '../images/icons/pause-icon.svg'; 
 import FullscreenIcon from '../images/icons/fullscreen.svg';
 import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
+import VolumeIcon from '../images/icons/volume-icon.svg'; // assuming you have a volume icon
 
 const videoData = [
   { 
@@ -32,6 +33,8 @@ const CustomVideoPlayer = () => {
   const [timer, setTimer] = useState(0); // Timer state
   const controlsTimeoutRef = useRef(null);
   const timerRef = useRef(null);
+  const [showVolumeControl, setShowVolumeControl] = useState(false); // new state for volume control visibility
+  const [volume, setVolume] = useState(1); // new state for volume value
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -176,6 +179,7 @@ const CustomVideoPlayer = () => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
     }
+    setVolume(volume); // update the volume state
   };
 
   const handleVideoLoaded = () => {
@@ -253,15 +257,22 @@ const CustomVideoPlayer = () => {
         <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
           {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
         </button>
-        <input 
-          className='volume-control'
-          type="range" 
-          min="0" 
-          max="1" 
-          step="0.1" 
-          onChange={handleVolumeChange}
-          defaultValue="1"
-        />
+        <div className="volume-section">
+          <button className='volume-btn' onClick={() => setShowVolumeControl(!showVolumeControl)}>
+            <img src={VolumeIcon} alt="Volume Control" />
+          </button>
+          {showVolumeControl && (
+            <input 
+              className='volume-control'
+              type="range" 
+              min="0" 
+              max="1" 
+              step="0.1" 
+              onChange={handleVolumeChange}
+              value={volume} // use the volume state
+            />
+          )}
+        </div>
       </div>
 
       <div className={`video-controls-down ${controlsVisible && !showChoices ? '' : 'hidden'}`}>

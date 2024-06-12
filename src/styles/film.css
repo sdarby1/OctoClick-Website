@@ -62,14 +62,23 @@
   background-color: black; /* Hintergrundfarbe, falls gewünscht */
 }
 
-.play-btn {
+.volume-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.play-btn, .volume-btn {
   background-color: transparent;
   cursor: pointer;
   border: none;
+  padding: 0px;
 }
 
-.play-btn img {
+.play-btn img, .volume-btn img {
   height: 40px;
+  width: 40px;
 }
 
 .video-controls-up {
@@ -259,7 +268,7 @@ input[type="range"]::-moz-range-thumb {
     font-size: 12px;
   }
 
-  .play-btn img {
+  .play-btn img, .volume-btn img {
     height: 25px;
   }
 
