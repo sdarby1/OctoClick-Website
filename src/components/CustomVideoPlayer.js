@@ -189,7 +189,7 @@ const CustomVideoPlayer = () => {
     setControlsVisible(true);
     controlsTimeoutRef.current = setTimeout(() => {
       setControlsVisible(false);
-    }, 5000); // 5000 ms = 5 seconds
+    }, 2500); // 5000 ms = 5 seconds
   };
 
   useEffect(() => {
@@ -248,9 +248,10 @@ const CustomVideoPlayer = () => {
         playsInline // Verhindert Vollbild-Abspielen auf iOS
         webkit-playsinline="true" // Ältere iOS-Versionen
       />
-      <div className={`video-controls ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
-        <button onClick={togglePlayPause} className='play-btn'>
-          {isPlaying ? <img src={PauseIcon} alt="Pause" /> : <img src={PlayIcon} alt="Play" />}
+
+      <div className={`video-controls-up ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
+        <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
+          {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
         </button>
         <input 
           className='volume-control'
@@ -262,6 +263,13 @@ const CustomVideoPlayer = () => {
           defaultValue="1"
         />
       </div>
+
+      <div className={`video-controls-down ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
+        <button onClick={togglePlayPause} className='play-btn'>
+          {isPlaying ? <img src={PauseIcon} alt="Pause" /> : <img src={PlayIcon} alt="Play" />}
+        </button>
+      </div>
+
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
         {showChoices && (
           <>
@@ -274,9 +282,6 @@ const CustomVideoPlayer = () => {
           </>
         )}
       </div>
-      <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
-        {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
-      </button>
       <div className={`progress ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         {formatTime(progress)} / {formatTime(duration)}
         <input 

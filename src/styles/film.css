@@ -8,6 +8,7 @@
   width: 60%;
   border-radius: 20px;
   overflow: hidden;
+  z-index: 2000;
 }
 
 .loading-placeholder {
@@ -62,11 +63,41 @@
 }
 
 .play-btn {
-  position: absolute;
-  left: 40px;
-  bottom: 20px;
-  transform: translate(-50%, 0);
+  background-color: transparent;
   cursor: pointer;
+  border: none;
+}
+
+.play-btn img {
+  height: 40px;
+}
+
+.video-controls-up {
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 20%;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,0.56) 19%, rgba(0,0,0,0) 100%);
+}
+
+.video-controls-down {
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 20%;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0.56) 19%, rgba(0,0,0,0) 100%);
 }
 
 /* CSS: Stelle sicher, dass diese Stile in deiner Anwendung verfügbar sind */
@@ -106,10 +137,11 @@
 }
 
 .fullscreen-btn {
-  position: absolute;
   top: 20px;
   left: 20px;
-  padding: 10px;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
@@ -131,7 +163,6 @@
 
 .volume-control {
   cursor: pointer;
-  position: absolute;
   top: 80px;
   left: 20px;
 }
@@ -227,5 +258,13 @@ input[type="range"]::-moz-range-thumb {
   .video-choices button {
     padding: 10px 30px;
     font-size: 12px;
+  }
+
+  .play-btn img {
+    height: 25px;
+  }
+
+  .video-controls-up {
+    flex-direction: row;
   }
 }

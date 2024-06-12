@@ -1,3 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
-  <path id="Icon_material-fullscreen-exit" data-name="Icon material-fullscreen-exit" d="M7.5,24H12v4.5h3V21H7.5ZM12,12H7.5v3H15V7.5H12Zm9,16.5h3V24h4.5V21H21ZM24,12V7.5H21V15h7.5V12Z" transform="translate(-7.5 -7.5)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="27.126" height="27.126" viewBox="0 0 27.126 27.126">
+  <path id="Icon_material-sharp-fullscreen-exit" data-name="Icon material-sharp-fullscreen-exit" d="M7.5,28.813h5.813v5.813h3.875V24.938H7.5Zm5.813-15.5H7.5v3.875h9.688V7.5H13.313ZM24.938,34.626h3.875V28.813h5.813V24.938H24.938Zm3.875-21.313V7.5H24.938v9.688h9.688V13.313Z" transform="translate(-7.5 -7.5)" fill="#fff"/>
 </svg>
