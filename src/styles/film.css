@@ -4,8 +4,9 @@
 }
 
 .video-container {
-  position: relative; /* Für die Positionierung der Buttons */
-  width: 60%;
+  position: absolute; /* Für die Positionierung der Buttons */
+  left: 0;
+  width: 100%;
   border-radius: 20px;
   overflow: hidden;
   z-index: 2000;

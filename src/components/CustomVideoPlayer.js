@@ -3,7 +3,7 @@ import PlayIcon from '../images/icons/play-icon.svg';
 import PauseIcon from '../images/icons/pause-icon.svg'; 
 import FullscreenIcon from '../images/icons/fullscreen.svg';
 import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
-import VolumeIcon from '../images/icons/volume-icon.svg'; // assuming you have a volume icon
+import VolumeIcon from '../images/icons/volume-icon.svg';
 
 const videoData = [
   { 
@@ -33,8 +33,8 @@ const CustomVideoPlayer = () => {
   const [timer, setTimer] = useState(0); // Timer state
   const controlsTimeoutRef = useRef(null);
   const timerRef = useRef(null);
-  const [showVolumeControl, setShowVolumeControl] = useState(false); // new state for volume control visibility
-  const [volume, setVolume] = useState(1); // new state for volume value
+  const [showVolumeControl, setShowVolumeControl] = useState(false); 
+  const [volume, setVolume] = useState(1);
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -59,22 +59,22 @@ const CustomVideoPlayer = () => {
     const hasChoices = videoData[currentIndex].choices.length > 0;
     setShowChoices(hasChoices);
     if (hasChoices) {
-      setControlsVisible(false); // Hide controls when choices are shown
+      setControlsVisible(false);
     }
   };
 
   const handleChoice = (nextIndex) => {
     setIsLoading(true);
     setCurrentIndex(nextIndex);
-    setShowChoices(false); // Hide choices when a new video starts
-    setControlsVisible(true); // Show controls when a new video starts
-    cancelAnimationFrame(timerRef.current); // Clear the timer when a choice is made
+    setShowChoices(false);
+    setControlsVisible(true);
+    cancelAnimationFrame(timerRef.current);
   };
 
   const updateTimer = (endTime) => {
     const now = Date.now();
     const timeLeft = Math.max(0, endTime - now);
-    setTimer(Math.ceil(timeLeft / 1000)); // Convert milliseconds to seconds
+    setTimer(Math.ceil(timeLeft / 1000));
 
     if (timeLeft > 0) {
       timerRef.current = requestAnimationFrame(() => updateTimer(endTime));
@@ -121,19 +121,19 @@ const CustomVideoPlayer = () => {
     const handleFullScreenChange = () => {
       const isFullScreenNow = Boolean(
         document.fullscreenElement ||
-        document.webkitFullscreenElement || // Safari
-        document.mozFullScreenElement || // Firefox
-        document.msFullscreenElement // IE/Edge
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
       );
-  
+
       setIsFullScreen(isFullScreenNow);
     };
-  
+
     document.addEventListener('fullscreenchange', handleFullScreenChange);
-    document.addEventListener('webkitfullscreenchange', handleFullScreenChange); // Safari
-    document.addEventListener('mozfullscreenchange', handleFullScreenChange); // Firefox
-    document.addEventListener('MSFullscreenChange', handleFullScreenChange); // IE/Edge
-  
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullScreenChange);
+
     return () => {
       document.removeEventListener('fullscreenchange', handleFullScreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
@@ -144,33 +144,31 @@ const CustomVideoPlayer = () => {
 
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
-    if (element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.webkitRequestFullscreen) { // Safari
-            element.webkitRequestFullscreen();
-        } else if (element.mozRequestFullScreen) { // Firefox
-            element.mozRequestFullScreen();
-        } else if (element.msRequestFullscreen) { // IE/Edge
-            element.msRequestFullscreen();
-        }
-        setIsFullScreen(true); // Aktualisiere den Zustand, um anzuzeigen, dass du jetzt im Vollbildmodus bist
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
     }
+    setIsFullScreen(true);
   };
 
   const exitFullScreen = () => {
     if (document.fullscreenElement) {
-        document.exitFullscreen();
-        setIsFullScreen(false); // Aktualisiere den Zustand, nachdem der Vollbildmodus beendet wurde
-    } else if (document.webkitFullscreenElement) { // Safari
-        document.webkitExitFullscreen();
-        setIsFullScreen(false);
-    } else if (document.mozFullScreenElement) { // Firefox
-        document.mozCancelFullScreen();
-        setIsFullScreen(false);
-    } else if (document.msFullscreenElement) { // IE/Edge
-        document.msExitFullscreen();
-        setIsFullScreen(false);
+      document.exitFullscreen();
+      setIsFullScreen(false);
+    } else if (document.webkitFullscreenElement) {
+      document.webkitExitFullscreen();
+      setIsFullScreen(false);
+    } else if (document.mozFullScreenElement) {
+      document.mozCancelFullScreen();
+      setIsFullScreen(false);
+    } else if (document.msFullscreenElement) {
+      document.msExitFullscreen();
+      setIsFullScreen(false);
     }
   };
 
@@ -179,7 +177,7 @@ const CustomVideoPlayer = () => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
     }
-    setVolume(volume); // update the volume state
+    setVolume(volume);
   };
 
   const handleVideoLoaded = () => {
@@ -193,7 +191,7 @@ const CustomVideoPlayer = () => {
     setControlsVisible(true);
     controlsTimeoutRef.current = setTimeout(() => {
       setControlsVisible(false);
-    }, 2500); // 5000 ms = 5 seconds
+    }, 2500);
   };
 
   useEffect(() => {
@@ -248,9 +246,9 @@ const CustomVideoPlayer = () => {
         poster={currentIndex === 0 ? videoData[currentIndex].poster : undefined}
         onEnded={handleVideoEnd} 
         onLoadedData={handleVideoLoaded}
-        controls={false} // Standard-Steuerungen deaktivieren
-        playsInline // Verhindert Vollbild-Abspielen auf iOS
-        webkit-playsinline="true" // Ältere iOS-Versionen
+        controls={false}
+        playsInline
+        webkit-playsinline="true"
       />
 
       <div className={`video-controls-up ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
@@ -269,7 +267,7 @@ const CustomVideoPlayer = () => {
               max="1" 
               step="0.1" 
               onChange={handleVolumeChange}
-              value={volume} // use the volume state
+              value={volume}
             />
           )}
         </div>

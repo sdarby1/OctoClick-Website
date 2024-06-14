@@ -1,12 +1,18 @@
-import CustomVideoPlayer from "../components/CustomVideoPlayer"
 
 const Film = () => {
   return (
     <div className="film-section-container">
       <div className="film-section">
         <div className="interactive-video-container">
-            <h2>Film</h2>
-            <CustomVideoPlayer />
+            <h2>Projekte</h2>
+            <iframe 
+              title="Custom Video Player"
+              src="https://octoclick.de/videoplayer" 
+              width="800" 
+              height="450" 
+              frameborder="0" 
+              allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>

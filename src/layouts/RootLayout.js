@@ -4,7 +4,7 @@ import Header from '../components/Header'; // Stelle sicher, dass der Pfad korre
 
 const RootLayout = () => {
   return (
-    <>
+    <div className="custom-body">
       <Header />
       <main>
         <Outlet />
@@ -12,7 +12,7 @@ const RootLayout = () => {
       <footer>
         Footer
       </footer>
-    </>
+    </div>
   );
 };
 
