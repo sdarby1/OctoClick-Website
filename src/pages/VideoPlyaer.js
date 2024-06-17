@@ -1,4 +1,3 @@
-// src/pages/VideoPlayerPage.js
 import React from 'react';
 import CustomVideoPlayer from '../components/CustomVideoPlayer';
 

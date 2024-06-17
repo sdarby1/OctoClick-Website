@@ -1,19 +1,18 @@
 
 const Film = () => {
   return (
-    <div className="film-section-container">
-      <div className="film-section">
-        <div className="interactive-video-container">
-            <h2>Projekte</h2>
-            <iframe 
-              title="Custom Video Player"
-              src="https://octoclick.de/videoplayer" 
-              width="800" 
-              height="450" 
-              frameborder="0" 
-              allowfullscreen>
-          </iframe>
-        </div>
+    <div style={{ height: '100vh' }}>
+      <h2>Film</h2>
+      <div className="iframe-section" style={{ height: '100%' }}>
+        <iframe 
+          title="Custom Video Player"
+          src="https://octoclick.de/videoplayer" 
+          frameBorder="0" 
+          allow="fullscreen"
+          allowFullScreen
+          style={{ border: 'none', padding: '0', margin: '0', display: 'block', width: '100%', height: '100%' }}
+        >
+        </iframe>
       </div>
     </div>
   )
