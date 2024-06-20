@@ -1,55 +1,60 @@
-.hidden {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+
+/**** Film ****/
 
 .video-container {
-  position: absolute; /* Für die Positionierung der Buttons */
+  position: absolute;
   left: 0;
   width: 100%;
   overflow: hidden;
   z-index: 2000;
 }
 
-.loading-placeholder {
-  position: absolute;
+.video-container.fullscreen {
+  position: relative;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; 
+}
+
+.video-container.fullscreen video {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  color: white;
-  font-size: 24px;
-  z-index: 1000;
 }
 
-.choice-btn-container {
-  position: absolute;
-  bottom: 0px;
-  height: 25%;
+.film {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* .film-section {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 20px;
-  background-color: black;
+  flex-direction: column;
+} */
+
+
+
+
+/**** Steuerelemente ****/
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  padding: 0px;
 }
 
-.buttons-container {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000; /* Stelle sicher, dass die Buttons über dem Player liegen */
-}
 
 .fullscreen-toggle {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 1000; /* Stelle sicher, dass der Button über dem Player liegt */
+  z-index: 1000; 
 }
 
 .fake-fullscreen {
@@ -58,8 +63,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 999; /* Stelle sicher, dass dies das höchste z-index ist */
-  background-color: black; /* Hintergrundfarbe, falls gewünscht */
+  z-index: 999; 
 }
 
 .volume-section {
@@ -107,26 +111,12 @@
   height: 20%;
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,0.56) 19%, rgba(0,0,0,0) 100%);
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-/* CSS: Stelle sicher, dass diese Stile in deiner Anwendung verfügbar sind */
 
-.video-container.fullscreen {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black; /* Hintergrundfarbe für bessere Optik im Vollbild */
-  display: flex;
-  flex-direction: column; /* Stapelt Video und Button-Container vertikal */
-  justify-content: space-between; 
-}
 
-.video-container.fullscreen video {
-  width: 100%;
-  height: 100%;
-}
 
 .video-choices {
   position: absolute;
@@ -186,18 +176,7 @@
   cursor: pointer;
 }
 
-.film {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
 
-.film-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
 
 
 input[type="range"] {
