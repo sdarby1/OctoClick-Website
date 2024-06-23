@@ -12,5 +12,18 @@
     "desc2": "Kreativität trifft Technologie",
     "desc3": "Mit innovativen Lösungen",
     "link": "Neusten Film ansehen"
-   }
+   },
+
+   "info-section": {
+      "title1": "Filmbereich",
+      "title2": "Audiobereich",
+      "title3": "webbereich",
+      "desc1": "Das hier ist eine Beispielbeschreibung für den Filmbereich, Sie dient nur dem Test, ob auch alles soweit funktioniert.",
+      "desc2": "Das hier ist eine Beispielbeschreibung für den Audiobereich, Sie dient nur dem Test, ob auch alles soweit funktioniert.",
+      "desc3": "Das hier ist eine Beispielbeschreibung für den Webbereich, Sie dient nur dem Test, ob auch alles soweit funktioniert."
+   },
+
+   "showMore": "Mehr anzeigen",
+   "showLess": "Weniger anzeigen"
 }
+

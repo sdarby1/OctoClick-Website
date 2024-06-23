@@ -12,5 +12,17 @@
      "desc2": "Creativity meets technology",
      "desc3": "With innovative solutions",
      "link": "Watch latest film"
-    }
+    },
+
+    "info-section": {
+        "title1": "Film section",
+        "title2": "Audio section",
+        "title3": "Web section",
+        "desc1": "This is an example description for the film section. It is only used to test whether everything works so far.",
+        "desc2": "This is an example description for the audio section. It is only used to test whether everything works so far.",
+        "desc3": "This is an example description for the web section. It is only used to test whether everything works so far."
+     },
+
+    "showMore": "Show more",
+    "showLess": "Show less"
  }

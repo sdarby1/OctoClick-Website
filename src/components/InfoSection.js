@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useScrollAnimation from '../hooks/UseScrollAnimation';
+import ExpandableText from './ExpandableText';
+import { useTranslation } from 'react-i18next';
+
 
 const InfoSection = () => {
+  const { t } = useTranslation();
   const sectionVariants = {
     hidden: (direction) => ({
       opacity: 0,
@@ -22,9 +26,11 @@ const InfoSection = () => {
   const [ref3, controls3] = useScrollAnimation();
   const [ref4, controls4] = useScrollAnimation();
 
+
   return (
     <div>
       <div className="info-section">
+
         <motion.div
           className="info-image-container"
           initial="hidden"
@@ -33,6 +39,7 @@ const InfoSection = () => {
           variants={sectionVariants}
           ref={ref1}
         ></motion.div>
+
         <motion.div
           className="info-text-container"
           initial="hidden"
@@ -41,10 +48,14 @@ const InfoSection = () => {
           variants={sectionVariants}
           ref={ref2}
         >
-          <h2>Headline Info</h2>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          <ExpandableText
+          title={t('info-section.title1')}
+          content={t('info-section.desc1')}
+          />
         </motion.div>
+
       </div>
+
       <div className="info-section">
         <motion.div
           className="info-text-container"
@@ -54,8 +65,10 @@ const InfoSection = () => {
           variants={sectionVariants}
           ref={ref3}
         >
-          <h2>Headline Info</h2>
-          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <ExpandableText
+          title={t('info-section.title2')}
+          content={t('info-section.desc2')}
+          />
         </motion.div>
         <motion.div
           className="info-image-container"
@@ -66,6 +79,7 @@ const InfoSection = () => {
           ref={ref4}
         ></motion.div>
       </div>
+
     </div>
   );
 };
