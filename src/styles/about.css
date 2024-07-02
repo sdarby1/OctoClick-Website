@@ -10,13 +10,12 @@
     perspective: 1000px;
     width: fit-content;
     overflow: hidden;
-    transition: transform 0.4s ease-in-out;
   }
   
   .perspective-container img {
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out, transform-origin 1s ease-in-out;
     width: 100%;
-    transform: rotateY(0deg) scale(1);
+    transform: rotateY(0deg);
     opacity: 1; /* Set initial image opacity to 1 */
     transform-origin: center center; /* Keep transform-origin consistent */
   }
@@ -26,13 +25,48 @@
   }
   
   .perspective-container.left.transformed img {
-    transform: rotateY(20deg) scale(1.05);
-    transform-origin: left center;
+    animation: rotateLeft 0.4s forwards;
   }
   
   .perspective-container.right.transformed img {
-    transform: rotateY(-20deg) scale(1.05);
-    transform-origin: right center;
+    animation: rotateRight 0.4s forwards;
+  }
+  
+  .perspective-container.returning img {
+    animation: rotateBack 0.4s forwards;
+  }
+  
+  @keyframes rotateLeft {
+    0% {
+      transform-origin: center center;
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform-origin: left center;
+      transform: rotateY(20deg);
+    }
+  }
+  
+  @keyframes rotateRight {
+    0% {
+      transform-origin: center center;
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform-origin: right center;
+      transform: rotateY(-20deg);
+    }
+  }
+  
+  @keyframes rotateBack {
+    0% {
+      transform-origin: var(--current-origin); /* Custom property for dynamic origin */
+      transform: rotateY(var(--current-rotate)); /* Custom property for dynamic rotate */
+    }
+    100% {
+      transform-origin: center center;
+      transform: rotateY(0deg);
+    }
   }
   
   .info-section {

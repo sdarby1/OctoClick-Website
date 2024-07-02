@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import ImageSlider from '../hooks/ImageSlider';
  // Ensure you import the ImageSlider component
 
-const images1 = [
+ const images1 = [
   './images/slider/static.jpg',
   './images/slider/slide1.jpg',
   './images/slider/slide2.jpg',
@@ -45,6 +45,26 @@ const InfoSection = () => {
 
   const [isSlider1Visible, setIsSlider1Visible] = useState(false);
   const [isSlider2Visible, setIsSlider2Visible] = useState(false);
+
+  useEffect(() => {
+    if (!isSlider1Visible) {
+      document.querySelector('.info-section .perspective-container.left').style.setProperty('--current-origin', 'left center');
+      document.querySelector('.info-section .perspective-container.left').style.setProperty('--current-rotate', '20deg');
+      document.querySelector('.info-section .perspective-container.left').classList.add('returning');
+    } else {
+      document.querySelector('.info-section .perspective-container.left').classList.remove('returning');
+    }
+  }, [isSlider1Visible]);
+
+  useEffect(() => {
+    if (!isSlider2Visible) {
+      document.querySelector('.info-section .perspective-container.right').style.setProperty('--current-origin', 'right center');
+      document.querySelector('.info-section .perspective-container.right').style.setProperty('--current-rotate', '-20deg');
+      document.querySelector('.info-section .perspective-container.right').classList.add('returning');
+    } else {
+      document.querySelector('.info-section .perspective-container.right').classList.remove('returning');
+    }
+  }, [isSlider2Visible]);
 
   return (
     <div>
