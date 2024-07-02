@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import useScrollAnimation from '../hooks/UseScrollAnimation';
 import ExpandableText from './ExpandableText';
 import { useTranslation } from 'react-i18next';
+import ImageSlider from '../hooks/ImageSlider';
+ // Ensure you import the ImageSlider component
 
+const images1 = [
+  './images/slider/static.jpg',
+  './images/slider/slide1.jpg',
+  './images/slider/slide2.jpg',
+  './images/slider/slide3.jpg',
+  // Weitere Bilder hier hinzufügen
+];
+
+const images2 = [
+  './images/slider/static.jpg',
+  './images/slider/slide1.jpg',
+  './images/slider/slide2.jpg',
+  './images/slider/slide3.jpg',
+  // Weitere Bilder hier hinzufügen
+];
 
 const InfoSection = () => {
   const { t } = useTranslation();
@@ -26,34 +43,37 @@ const InfoSection = () => {
   const [ref3, controls3] = useScrollAnimation();
   const [ref4, controls4] = useScrollAnimation();
 
+  const [isSlider1Visible, setIsSlider1Visible] = useState(false);
+  const [isSlider2Visible, setIsSlider2Visible] = useState(false);
 
   return (
     <div>
       <div className="info-section">
-
         <motion.div
           className="info-image-container"
           initial="hidden"
           animate={controls1}
-          custom="right"
+          custom="left"
           variants={sectionVariants}
           ref={ref1}
-        ></motion.div>
+        >
+          <ImageSlider isVisible={isSlider1Visible} images={images1} direction="left" />
+        </motion.div>
 
         <motion.div
           className="info-text-container"
           initial="hidden"
           animate={controls2}
-          custom="left"
+          custom="right"
           variants={sectionVariants}
           ref={ref2}
         >
           <ExpandableText
-          title={t('info-section.title1')}
-          content={t('info-section.desc1')}
+            title={t('info-section.title1')}
+            content={t('info-section.desc1')}
+            onToggle={setIsSlider1Visible}
           />
         </motion.div>
-
       </div>
 
       <div className="info-section">
@@ -65,11 +85,13 @@ const InfoSection = () => {
           variants={sectionVariants}
           ref={ref3}
         >
-            <ExpandableText
-          title={t('info-section.title2')}
-          content={t('info-section.desc2')}
+          <ExpandableText
+            title={t('info-section.title2')}
+            content={t('info-section.desc2')}
+            onToggle={setIsSlider2Visible}
           />
         </motion.div>
+
         <motion.div
           className="info-image-container"
           initial="hidden"
@@ -77,9 +99,10 @@ const InfoSection = () => {
           custom="left"
           variants={sectionVariants}
           ref={ref4}
-        ></motion.div>
+        >
+          <ImageSlider isVisible={isSlider2Visible} images={images2} direction="right" />
+        </motion.div>
       </div>
-
     </div>
   );
 };

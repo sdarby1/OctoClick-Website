@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next'; // Importiere die Hook von react-i18next
+import { useTranslation } from 'react-i18next';
 
-
-const ExpandableText = ({ title, content, initialVisible = false }) => {
-  const { t } = useTranslation(); // Initialisiere die Übersetzungsfunktion
+const ExpandableText = ({ title, content, initialVisible = false, onToggle }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(initialVisible);
 
   const toggleVisibility = () => {
-    setIsVisible(!isVisible);
+    const newVisibility = !isVisible;
+    setIsVisible(newVisibility);
+    onToggle(newVisibility); // Inform the parent component about the visibility change
   };
 
   const containerVariants = {
     hidden: {
-      y: '0%', // Startet zentriert
+      y: '0%',
       opacity: 1
     },
     visible: {
-      y: '-10%', // Bewegt sich nur leicht nach oben
+      y: '-10%',
       opacity: 1,
       transition: {
         y: { duration: 0.5 },
@@ -35,7 +36,7 @@ const ExpandableText = ({ title, content, initialVisible = false }) => {
     },
     visible: {
       opacity: 1,
-      maxHeight: '200px', // Angenommene Höhe, anpassen nach Bedarf
+      maxHeight: '200px',
       overflow: 'visible',
       transition: { duration: 0.5 }
     }

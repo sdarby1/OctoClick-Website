@@ -30,11 +30,10 @@
 }
 
 .info-image-container {
-  background-image: url("https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
   background-size: cover;
   background-position: center center;
-  min-height: 400px;
 }
+
 
 
 .showmore-btn {
@@ -47,19 +46,3 @@
 }
 
 /* Responsives Design */
-@media (max-width: 780px) {
-  .info-section {
-    grid-template-columns: 1fr;
-    margin: 40px 0px;
-  }
-
-  .hidden.from-left,
-  .hidden.from-right {
-    transform: translateX(-100%);
-  }
-
-  .visible.from-left,
-  .visible.from-right {
-    transform: translateX(0);
-  }
-}
