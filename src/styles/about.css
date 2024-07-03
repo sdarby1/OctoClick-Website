@@ -9,7 +9,6 @@
   .perspective-container {
     perspective: 1000px;
     width: fit-content;
-    overflow: hidden;
   }
   
   .perspective-container img {
@@ -18,6 +17,8 @@
     transform: rotateY(0deg);
     opacity: 1; /* Set initial image opacity to 1 */
     transform-origin: center center; /* Keep transform-origin consistent */
+    box-shadow: 10px 10px 20px #00a78055;
+    border-radius: 10px;
   }
   
   .perspective-container.transformed img {
@@ -72,7 +73,6 @@
   .info-section {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
   }
   
   .info-text-container, .info-image-container {
@@ -82,12 +82,16 @@
   
   /* Responsives Design */
   @media (max-width: 780px) {
-    .info-section {
-      flex-direction: column;
-      align-items: center;
-      margin: 40px 0;
-    }
   
+.info-container .info-section:nth-child(1) {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.info-container .info-section:nth-child(2) {
+  display: grid;
+  grid-template-columns: 1fr;
+}
     .info-text-container,
     .info-image-container {
       margin: 20px 0;

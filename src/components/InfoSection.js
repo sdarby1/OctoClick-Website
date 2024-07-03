@@ -67,7 +67,7 @@ const InfoSection = () => {
   }, [isSlider2Visible]);
 
   return (
-    <div>
+    <div className="info-container">
       <div className="info-section">
         <motion.div
           className="info-image-container"
