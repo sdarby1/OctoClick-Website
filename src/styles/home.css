@@ -25,6 +25,7 @@
   flex-direction: column;
   margin: 80px 0;
 gap: 80px;
+overflow: hidden;
 }
 
 .info-container .info-section:nth-child(1) {
@@ -42,7 +43,6 @@ gap: 80px;
   gap: 40px;
   font-size: 20px;
   /* overflow: hidden; */
-  z-index: 2000000;
 }
 
 .info-image-container {
