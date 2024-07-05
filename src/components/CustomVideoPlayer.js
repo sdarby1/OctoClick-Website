@@ -316,12 +316,12 @@ const CustomVideoPlayer = () => {
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
         {showChoices && (
           <>
-            <div className="timer">{timer}</div>
             {videoData[currentIndex].choices.map((choice, index) => (
               <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
                 {choice.text}
               </button>
             ))}
+            <div className="timer">{timer}</div>
           </>
         )}
       </div>

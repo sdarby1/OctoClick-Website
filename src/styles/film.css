@@ -125,7 +125,7 @@
   transform: translateX(-50%) translateY(100%); /* Zentriert den Container horizontal */
   z-index: 100; /* Stellt sicher, dass die Buttons über dem Video liegen */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 10px; /* Abstand zwischen den Buttons */
   transition: all 0.5s ease-in-out;
