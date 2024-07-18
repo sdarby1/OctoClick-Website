@@ -6,21 +6,24 @@ import NoLayout from './layouts/NoLayout'; // Neue Layout-Komponente
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Film from './pages/Film';
+import Projects from './pages/Projects';
 import NotFound from './pages/404';
-import ClickEffectProvider from './components/ClickEffectProvider';
+// import ClickEffectProvider from './components/ClickEffectProvider';
+// import CustomVideoPlayer from './components/CustomVideoPlayer';
+import InteractiveFilm from './pages/InteractiveFilm';
 import CustomVideoPlayer from './components/CustomVideoPlayer';
 
 function App() {
   return (
-    <ClickEffectProvider>
+    // <ClickEffectProvider>
       <Router>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<Home />} />
-            <Route path="film" element={<Film />} />
+            <Route path="projects" element={<Projects />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="hofgarten" element={<InteractiveFilm />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/videoplayer" element={<NoLayout />}>
@@ -28,7 +31,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </ClickEffectProvider>
+    // </ClickEffectProvider>
   );
 }
 

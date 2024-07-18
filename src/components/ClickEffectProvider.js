@@ -22,7 +22,7 @@ const ClickEffectProvider = ({ children }) => {
   }, []);
 
   return (
-    <>
+     <>
       {children}
       {clicks.map(click => (
         <div
@@ -32,7 +32,7 @@ const ClickEffectProvider = ({ children }) => {
           onAnimationEnd={() => setClicks(clicks.filter(c => c.id !== click.id))}
         />
       ))}
-    </>
+    </> 
   );
 };
 

@@ -5,9 +5,6 @@ import FullscreenIcon from '../images/icons/fullscreen.svg';
 import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
 import VolumeIcon from '../images/icons/volume-icon.svg';
 
-
-// Video Sources + zugehörige Entscheidungen
-
 const videoData = [
   { 
     src: "/videos/first.mp4", 
@@ -22,9 +19,6 @@ const videoData = [
   { src: "/videos/choice2dot2.mp4", choices: [] },
 ];
 
-
-
-
 const CustomVideoPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,14 +28,13 @@ const CustomVideoPlayer = () => {
   const [showChoices, setShowChoices] = useState(false);
   const [progress, setProgress] = useState(0); 
   const [duration, setDuration] = useState(0); 
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
-  const [timer, setTimer] = useState(0); // Timer state
+  const [timer, setTimer] = useState(0); 
   const controlsTimeoutRef = useRef(null);
   const timerRef = useRef(null);
   const [showVolumeControl, setShowVolumeControl] = useState(false); 
   const [volume, setVolume] = useState(1);
-
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -49,7 +42,6 @@ const CustomVideoPlayer = () => {
       setIsPlaying(true);
     }
   }, [currentIndex]);
-
 
   const togglePlayPause = () => {
     if (videoRef.current) {
@@ -63,7 +55,6 @@ const CustomVideoPlayer = () => {
     }
   };
 
-
   const handleVideoEnd = () => {
     const hasChoices = videoData[currentIndex].choices.length > 0;
     setShowChoices(hasChoices);
@@ -72,7 +63,6 @@ const CustomVideoPlayer = () => {
     }
   };
 
-
   const handleChoice = (nextIndex) => {
     setIsLoading(true);
     setCurrentIndex(nextIndex);
@@ -80,7 +70,6 @@ const CustomVideoPlayer = () => {
     setControlsVisible(true);
     cancelAnimationFrame(timerRef.current);
   };
-
 
   const updateTimer = (endTime) => {
     const now = Date.now();
@@ -91,7 +80,6 @@ const CustomVideoPlayer = () => {
       timerRef.current = requestAnimationFrame(() => updateTimer(endTime));
     }
   };
-
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
@@ -112,7 +100,6 @@ const CustomVideoPlayer = () => {
     }
   };
 
-
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
@@ -124,13 +111,11 @@ const CustomVideoPlayer = () => {
     }
   }, [currentIndex]);
 
-
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
-
 
   useEffect(() => {
     const handleFullScreenChange = () => {
@@ -143,7 +128,6 @@ const CustomVideoPlayer = () => {
 
       setIsFullScreen(isFullScreenNow);
     };
-
 
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
@@ -158,7 +142,6 @@ const CustomVideoPlayer = () => {
     };
   }, []);
 
-
   const enterFullScreen = () => {
     const element = videoContainerRef.current;
     if (element.requestFullscreen) {
@@ -172,7 +155,6 @@ const CustomVideoPlayer = () => {
     }
     setIsFullScreen(true);
   };
-
 
   const exitFullScreen = () => {
     if (document.fullscreenElement) {
@@ -190,7 +172,6 @@ const CustomVideoPlayer = () => {
     }
   };
 
-
   const handleVolumeChange = (event) => {
     const volume = parseFloat(event.target.value);
     if (videoRef.current) {
@@ -199,11 +180,20 @@ const CustomVideoPlayer = () => {
     setVolume(volume);
   };
 
-
   const handleVideoLoaded = () => {
     setIsLoading(false);
   };
 
+  const handleWaiting = () => {
+    cancelAnimationFrame(timerRef.current);
+  };
+
+  const handlePlaying = () => {
+    if (showChoices) {
+      const endTime = Date.now() + timer * 1000;
+      updateTimer(endTime);
+    }
+  };
 
   const showControlsTemporarily = () => {
     if (controlsTimeoutRef.current) {
@@ -212,9 +202,8 @@ const CustomVideoPlayer = () => {
     setControlsVisible(true);
     controlsTimeoutRef.current = setTimeout(() => {
       setControlsVisible(false);
-    }, 40000);
+    }, 4000);
   };
-
 
   useEffect(() => {
     const video = videoRef.current;
@@ -227,20 +216,22 @@ const CustomVideoPlayer = () => {
       video.addEventListener('timeupdate', updateProgress);
       video.addEventListener('loadedmetadata', updateProgress);
       video.addEventListener('loadeddata', handleVideoLoaded);
+      video.addEventListener('waiting', handleWaiting);
+      video.addEventListener('playing', handlePlaying);
       return () => {
         video.removeEventListener('timeupdate', updateProgress);
         video.removeEventListener('loadedmetadata', updateProgress);
         video.removeEventListener('loadeddata', handleVideoLoaded);
+        video.removeEventListener('waiting', handleWaiting);
+        video.removeEventListener('playing', handlePlaying);
       };
     }
   }, [currentIndex]);
-
 
   useEffect(() => {
     const handleMouseMove = () => {
       showControlsTemporarily();
     };
-
 
     const handleKeyDown = (event) => {
       if (event.code === 'Space' && !showChoices) {
@@ -248,7 +239,6 @@ const CustomVideoPlayer = () => {
         togglePlayPause();
       }
     };
-
 
     const videoContainer = videoContainerRef.current;
     if (videoContainer) {
@@ -261,11 +251,8 @@ const CustomVideoPlayer = () => {
     }
   }, [showChoices]);
 
-
-  // Rückgabe des Video Players (Was auf der Website dann angezeigt wird)
-
   return (
-    <div ref={videoContainerRef} className={`video-container ${isFullScreen ? 'fullscreen' : ''}`}>
+    <div ref={videoContainerRef} className={`video-container ${isFullScreen ? 'fullscreen' : ''}`} style={{ height: '100%' }}>
       {isLoading && <div className="loading-placeholder"></div>}
       <video 
         className={`film ${isLoading ? 'hidden' : ''}`}
@@ -278,9 +265,6 @@ const CustomVideoPlayer = () => {
         playsInline
         webkit-playsinline="true"
       />
-
-
-      {/* Oben angezeigte Steuerelemente */}
 
       <div className={`video-controls-up ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
@@ -304,9 +288,6 @@ const CustomVideoPlayer = () => {
         </div>
       </div>
 
-
-      {/* Unten angezeigte Steuerelemente */}
-      
       <div className={`video-controls-down ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         <button onClick={togglePlayPause} className='play-btn'>
           {isPlaying ? <img src={PauseIcon} alt="Pause" /> : <img src={PlayIcon} alt="Play" />}

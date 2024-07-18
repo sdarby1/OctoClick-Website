@@ -1,0 +1,26 @@
+[
+    {
+        "src": "../images/bts/bts-img-001.jpg",
+        "alt": "Beschreibung des Bildes 1"
+    },
+    {
+        "src": "pfad/zum/bild2.jpg",
+        "alt": "Beschreibung des Bildes 2"
+    },
+    {
+        "src": "pfad/zum/bild2.jpg",
+        "alt": "Beschreibung des Bildes 2"
+    },
+    {
+        "src": "pfad/zum/bild2.jpg",
+        "alt": "Beschreibung des Bildes 2"
+    },
+    {
+        "src": "pfad/zum/bild2.jpg",
+        "alt": "Beschreibung des Bildes 2"
+    },
+    {
+        "src": "pfad/zum/bild2.jpg",
+        "alt": "Beschreibung des Bildes 2"
+    }
+]

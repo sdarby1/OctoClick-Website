@@ -11,6 +11,7 @@ import './styles/home.css';
 import './styles/typo.css';
 import './styles/contact.css';
 import './styles/about.css';
+import './styles/iframe.css';
 
 
 
