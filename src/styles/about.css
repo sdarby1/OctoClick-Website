@@ -107,4 +107,27 @@
       transform: translateX(0);
     }
   }
+
+
+  .cls-1 {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-miterlimit: 10;
+    position: absolute;
+    height: 20em;
+    bottom: -6rem;
+    left: -8rem;
+    z-index: -1;
+  }
+
+  .cls-2 {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-miterlimit: 10;
+    position: absolute;
+    height: 20em;
+    top: -6rem;
+    right: 1rem;
+    z-index: -1;
+  }
   

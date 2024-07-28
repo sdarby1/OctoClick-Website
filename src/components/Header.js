@@ -14,6 +14,8 @@ const Header = () => {
   const isHome = location.pathname === '/'; // Prüft, ob die aktuelle Seite die Startseite ist
 
   return (
+    <div className='margin-container'>
+      <div className="boxed-container">
     <header className={isHome ? 'hero-header' : 'standard-header'}>
       {isHome ? (
         <div className="hero-container">
@@ -31,7 +33,7 @@ const Header = () => {
           <div className="hero-title-section">
             <h1 data-text={t('hero.title')}>{t('hero.title')}</h1>
             <HeroDescription />
-            <Link to="/film" className="link-to-film">{t('hero.link')}</Link>
+            <Link to="/projects" className="link-to-film">{t('hero.link')}</Link>
           </div>
           <div></div>
           <ScrollToContentButton />
@@ -52,6 +54,8 @@ const Header = () => {
         </div>
       )}
     </header>
+    </div>
+    </div>
   );
 };
 

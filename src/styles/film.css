@@ -8,6 +8,7 @@
   height: 100%;
   overflow: hidden;
   z-index: 2000;
+  margin-bottom: 2em;
 }
 
 
@@ -15,8 +16,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column; 
   justify-content: space-between; 
@@ -24,6 +25,9 @@
 
 
 .video-container.fullscreen video {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
@@ -247,7 +251,6 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 1000px) {
   .video-container {
-    position: relative; /* Für die Positionierung der Buttons */
     width: 100%;
     height: 100%;
     overflow: hidden;

@@ -14,8 +14,8 @@ const ImageSlider = ({ isVisible, images, direction = 'left' }) => {
   }, [isVisible, images.length]);
 
   return (
-    <div className={`perspective-container ${isVisible ? 'transformed' : ''} ${direction}`}>
-      <img src={images[currentImageIndex]} alt="Image Slider" />
+    <div className={`perspective-container slider-1 ${isVisible ? 'transformed' : ''} ${direction}`}>
+      <img src={images[currentImageIndex]} alt="Slider" />
     </div>
   );
 };

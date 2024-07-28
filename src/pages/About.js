@@ -27,13 +27,17 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className={`perspective-container ${isTransformed ? 'transformed' : ''}`}>
-        <img src={images[currentImageIndex]} alt="3D image" />
+    <div className='margin-container'>
+      <div className='boxed-container'>
+        <div className="app-container">
+          <div className={`perspective-container ${isTransformed ? 'transformed' : ''}`}>
+            <img src={images[currentImageIndex]} alt="3D Slide" />
+          </div>
+          <button onClick={handleButtonClick}>
+            {isTransformed ? 'Stop Slider' : 'Start Slider'}
+          </button>
+        </div>
       </div>
-      <button onClick={handleButtonClick}>
-        {isTransformed ? 'Stop Slider' : 'Start Slider'}
-      </button>
     </div>
   );
 }

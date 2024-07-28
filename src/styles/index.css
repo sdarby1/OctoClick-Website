@@ -4,11 +4,70 @@ body {
         color: var(--text-color);
         background-color: var(--background-color);
         padding: 0px;
+        margin: 0xp;
+        box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 .custom-body {
-  padding: 0px 10%;
+  padding: 0px;
 }
+
+
+
+.margin-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.boxed-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0px 10px;
+
+}
+
+/* @media (min-width: 540px) {
+  .boxed-container {
+    max-width: 380px;
+  }
+} */
+
+@media (min-width: 576px) {
+  .boxed-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .boxed-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1284px) {
+  .boxed-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .boxed-container {
+    max-width: 1402px;
+  }
+}
+
+
+
+
 
 body.no-padding {
   padding: 0 !important;

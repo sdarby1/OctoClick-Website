@@ -78,6 +78,14 @@ const InfoSection = () => {
           ref={ref1}
         >
           <ImageSlider isVisible={isSlider1Visible} images={images1} direction="left" />
+          <svg id="Ebene_1" className="cls-1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
+            <defs>
+              <style>
+
+              </style>
+            </defs>
+            <circle cx="95.24" cy="95.24" r="94.74" transform="translate(-39.45 95.24) rotate(-45)"/>
+          </svg>
         </motion.div>
 
         <motion.div
@@ -121,6 +129,14 @@ const InfoSection = () => {
           ref={ref4}
         >
           <ImageSlider isVisible={isSlider2Visible} images={images2} direction="right" />
+          <svg id="Ebene_1" className="cls-2" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
+            <defs>
+              <style>
+
+              </style>
+            </defs>
+            <circle cx="95.24" cy="95.24" r="94.74" transform="translate(-39.45 95.24) rotate(-45)"/>
+          </svg>
         </motion.div>
       </div>
     </div>
