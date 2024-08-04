@@ -5,6 +5,11 @@
      "about": "About us",
      "contact": "Contact"
     },
+
+    "new-film-container": {
+      "title": "Latest Project: Hofgarten - Flora Power",
+      "button": "Watch now"
+   },
     
     "hero": {
      "title": "We are OctoClick",
@@ -15,6 +20,7 @@
     },
 
     "info-section": {
+        "headline": "Our Departments",
         "title1": "Film section",
         "title2": "Audio section",
         "title3": "Web section",

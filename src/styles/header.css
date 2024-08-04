@@ -33,23 +33,26 @@ header nav ul{
     z-index: 2000;
 }
 
+/* .hero-background {
+  background-image: url("../images/background/hero-background.jpg");
+  background-size: cover; 
+  background-position: center;
+} */
+
 .hero-container {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: var(--background-color);
-    /* background-image: url("../images/background/hero-background.jpg");
-    background-size: cover; */
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr 0.2fr;
 }
 
 .hero-title-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center;  */
+    padding-top: 25%;
     gap: 20px;
 }
 
@@ -62,15 +65,26 @@ h1 {
   bottom: 40px;
   background: transparent;
   border: none;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   cursor: pointer;
   border-radius: 10px;
-  padding: 5px 10px;
-  height: 50px;
-  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+svg.scroll-down {
+  width: 17px;
+  padding: 1px;
+}
+
+.scroll-down-path {
+  fill: var(--text-color);
+  transition: 0.2s;
+}
+
+.scroll-down:hover .scroll-down-path {
+  fill: var(--primary-color);
 }
 
 
@@ -108,9 +122,20 @@ h1 {
   justify-content: center;
 }
 
-.social-media-icon-container img {
+.social-icons {
   cursor: pointer;
   height: 30px;
+  fill: var(--text-color);
+}
+
+.social-icon-path {
+  fill: var(--text-color);
+  transition: all 0.4s;
+
+}
+
+.social-icons:hover .social-icon-path {
+  fill: var(--primary-color)
 }
 
 /* Hamburger Menu */

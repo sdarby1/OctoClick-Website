@@ -74,8 +74,9 @@ gap: 80px;
   position: relative;
   width: 100%;
   background-color: var(--primary-color);
-  margin-top: 100px;
   margin-bottom: 100px;
+  /* border-bottom-left-radius: 10em;
+  border-bottom-right-radius: 10em; */
 }
 
 /* Responsives Design */

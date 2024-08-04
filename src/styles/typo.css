@@ -39,6 +39,18 @@ p {
     line-height: 30px;
 }
 
+@media (min-width: 2300px) and (max-width: 4099px) {
+    h1 {
+        font-size: 7em;
+    }
+}
+
+@media (min-width: 1900px) and (max-width: 2299px) {
+    h1 {
+        font-size: 6em;
+    }
+}
+
 @media (max-width: 1600px) {
     h1 {
         font-size: 4em;

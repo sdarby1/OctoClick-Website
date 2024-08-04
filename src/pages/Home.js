@@ -30,7 +30,7 @@ const Home = () => {
         </div>
         <div className="margin-container">
           <div className="boxed-container">
-            <h1>Unsere Fachbereiche</h1>
+            <h1>{t('info-section.headline')}</h1>
             <InfoSection />
           </div>
         </div>
