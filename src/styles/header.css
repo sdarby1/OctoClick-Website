@@ -325,6 +325,7 @@ svg.scroll-down {
       .hero-title-section {
         align-items: center;
         text-align: center;
+        padding: 0px;
       }
 
       .scroll-down-btn {
@@ -332,6 +333,11 @@ svg.scroll-down {
         left: 50%;
         bottom: 80px;
         transform: translateX(-50%);
+      }
+
+      svg.scroll-down {
+        width: 14px;
+        padding: 1px;
       }
 
       .social-media-icon-container {
