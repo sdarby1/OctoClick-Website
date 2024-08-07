@@ -1,0 +1,38 @@
+.project-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 20px;
+}
+
+.project {
+    max-width: 100%;
+}
+
+.project-thumbnail {
+    max-width: 100%;
+}
+
+
+.link-to-project {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+  
+  
+  @media (max-width: 1400px) {
+    .project-container {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  

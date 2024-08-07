@@ -3,6 +3,9 @@
   --text-color: #ffffff;
   --primary-color: #00A77F;
   --nav-background: #363636;
+
+  --background-image-dark: url('../images/background/hero-background-dark.jpg');
+  --background-image-light: url('../images/background/hero-background-light.jpg');
 }
 
 [data-theme="dark"] {

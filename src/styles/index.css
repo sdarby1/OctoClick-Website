@@ -41,6 +41,16 @@ body {
   }
 } */
 
+.breadcrumbs a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all 0.4s;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary-color)
+}
+
 @media (min-width: 576px) {
   .boxed-container {
     max-width: 540px;
@@ -62,6 +72,12 @@ body {
 @media (min-width: 1400px) {
   .boxed-container {
     max-width: 1402px;
+  }
+}
+
+@media (min-width: 2200px) {
+  .boxed-container {
+    max-width: 1702px;
   }
 }
 

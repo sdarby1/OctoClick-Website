@@ -23,7 +23,7 @@ function App() {
             <Route path="projects" element={<Projects />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="hofgarten" element={<InteractiveFilm />} />
+            <Route path="projects/hofgarten" element={<InteractiveFilm />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/videoplayer" element={<NoLayout />}>

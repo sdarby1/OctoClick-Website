@@ -34,10 +34,10 @@ header nav ul{
 }
 
 /* .hero-background {
-  background-image: url("../images/background/hero-background.jpg");
+  background-image: var(--hero-background-image);
   background-size: cover; 
   background-position: center;
-} */
+}  */
 
 .hero-container {
     position: relative;

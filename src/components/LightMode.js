@@ -12,7 +12,7 @@ function LightMode() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    // Speichern des aktuellen Themes im Local Storage
+    document.documentElement.style.setProperty('--hero-background-image', theme === 'dark' ? 'var(--background-image-dark)' : 'var(--background-image-light)');
     localStorage.setItem('theme', theme);
   }, [theme]);
 

@@ -29,6 +29,27 @@
         "desc3": "This is an example description for the web section. It is only used to test whether everything works so far."
      },
 
+     "about-us": {
+         "headline": "About us"
+      },
+
+      "projects": {
+         "headline": "Projects"
+      },
+
+      "breadcrumbs": {
+         "home": "Home",
+         "projects": "Projects",
+         "about": "About Us",
+         "contact": "Contact",
+         "hofgarten": "Hofgarten - Flora Power"
+    },
+
+    "film-page": {
+      "headline": "Hofgarten - Flora Power"
+   },
+
+
     "showMore": "Show more",
     "showLess": "Show less"
  }

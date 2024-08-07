@@ -35,11 +35,11 @@ const HeroDescription = () => {
           animation: showText ? `typewriter 3s steps(${heroDescriptions[currentDescription].length}, end) forwards, blink-caret .75s step-end infinite` : 'none'
         }}
       >
-        <h2 key={currentDescription}>{heroDescriptions[currentDescription]}</h2>
+        <h3 key={currentDescription}>{heroDescriptions[currentDescription]}</h3>
       </div>
       {/* Unsichtbarer Platzhalter für die Höhe */}
       <div style={{ visibility: 'hidden', position: 'absolute' }}>
-        <h2>{heroDescriptions[currentDescription]}</h2>
+        <h3>{heroDescriptions[currentDescription]}</h3>
       </div>
     </div>
   );

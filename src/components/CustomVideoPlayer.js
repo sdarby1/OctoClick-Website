@@ -8,11 +8,11 @@ import VolumeIcon from '../images/icons/volume-icon.svg';
 const videoData = [
   { 
     src: "/videos/first.mp4", 
-    poster: "/images/thumbnail/thumbnail.png", 
-    choices: [{ text: "Wahl 1", nextIndex: 1 }, { text: "Wahl 2", nextIndex: 2 }]
+    poster: "/images/thumbnail/thumbnail.jpg", 
+    choices: [{ text: "Das Fahrrad nehmen", nextIndex: 1 }, { text: "Zu Fuß verfolgen", nextIndex: 2 }]
   },
-  { src: "/videos/second.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
-  { src: "/videos/choice2.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
+  { src: "/videos/bike-choice.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
+  { src: "/videos/foot-choice.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
   { src: "/videos/third.mp4", choices: [] },
   { src: "/videos/choice1dot2.mp4", choices: [] },
   { src: "/videos/choice2dot1.mp4", choices: [] },
@@ -35,6 +35,10 @@ const CustomVideoPlayer = () => {
   const timerRef = useRef(null);
   const [showVolumeControl, setShowVolumeControl] = useState(false); 
   const [volume, setVolume] = useState(1);
+  const [nextVideoIndex, setNextVideoIndex] = useState(null); // Neuer Zustand für die Speicherung der nächsten Videoauswahl
+  const [selectedChoiceIndex, setSelectedChoiceIndex] = useState(null);
+
+
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -56,20 +60,41 @@ const CustomVideoPlayer = () => {
   };
 
   const handleVideoEnd = () => {
-    const hasChoices = videoData[currentIndex].choices.length > 0;
-    setShowChoices(hasChoices);
-    if (hasChoices) {
-      setControlsVisible(false);
+    // Überprüfe, ob eine Auswahl getroffen wurde und das Video zu Ende ist
+    if (nextVideoIndex !== null) {
+      setCurrentIndex(nextVideoIndex); // Wechselt zum nächsten Video
+      setShowChoices(false); // Verbirgt die Auswahlmöglichkeiten
+      setControlsVisible(true); // Zeigt Steuerungselemente an
+      setIsLoading(true); // Zeigt den Ladezustand an, bis das neue Video geladen ist
+      setNextVideoIndex(null); // Setzt die Auswahl zurück
+    } else {
+      // Keine Auswahl getroffen, zeige Optionen, wenn verfügbar
+      const hasChoices = videoData[currentIndex].choices.length > 0;
+      setShowChoices(hasChoices);
+      if (hasChoices) {
+        setControlsVisible(false);
+      }
     }
   };
+  
 
   const handleChoice = (nextIndex) => {
-    setIsLoading(true);
-    setCurrentIndex(nextIndex);
-    setShowChoices(false);
-    setControlsVisible(true);
-    cancelAnimationFrame(timerRef.current);
+    // Setze die nächste Videoindex und verberge die Wahlmöglichkeiten sofort
+    setNextVideoIndex(nextIndex);
+    setShowChoices(false); // Diese Zeile sorgt dafür, dass die Optionen sofort verschwinden
+  
+    // Du kannst auch hier den Zustand `isLoading` setzen, falls das Video noch weiterlädt,
+    // und es zu Anzeigeproblemen kommt, wenn das nächste Video lädt
+    // setIsLoading(true);
+  
+    // Kein Aufruf von setCurrentIndex hier, da dies in handleVideoEnd gehandhabt wird
   };
+  
+  useEffect(() => {
+    if (nextVideoIndex !== null) {
+      // Optional: Hier könnten Vorbereitungen für das nächste Video getroffen werden
+    }
+  }, [nextVideoIndex]);
 
   const updateTimer = (endTime) => {
     const now = Date.now();
@@ -298,9 +323,9 @@ const CustomVideoPlayer = () => {
         {showChoices && (
           <>
             {videoData[currentIndex].choices.map((choice, index) => (
-              <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
-                {choice.text}
-              </button>
+             <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
+             {choice.text}
+           </button>
             ))}
             <div className="timer">{timer}</div>
           </>

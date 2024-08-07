@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header'; // Stelle sicher, dass der Pfad korrekt ist
+import Footer from '../components/Footer';
 
 const RootLayout = () => {
   return (
@@ -10,7 +11,7 @@ const RootLayout = () => {
         <Outlet />
       </main>
       <footer>
-        Footer
+        <Footer />
       </footer>
     </div>
   );

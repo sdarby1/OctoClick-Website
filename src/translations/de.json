@@ -29,6 +29,19 @@
       "desc3": "Das hier ist eine Beispielbeschreibung für den Webbereich, Sie dient nur dem Test, ob auch alles soweit funktioniert."
    },
 
+   "about-us": {
+      "headline": "Über uns"
+   },
+
+   "projects": {
+      "headline": "Projekte"
+   },
+
+   "film-page": {
+      "headline": "Hofgarten - Flora Power"
+   },
+
+
    "showMore": "Mehr anzeigen",
    "showLess": "Weniger anzeigen"
 }

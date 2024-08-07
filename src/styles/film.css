@@ -151,6 +151,17 @@
   cursor: pointer;
 }
 
+
+.choice-button {
+  opacity: 0.5; /* Standard-Opazität für nicht ausgewählte Wahl */
+  pointer-events: none; /* Deaktiviert Klick-Ereignisse */
+}
+
+.choice-button.selected {
+  opacity: 1; /* Volle Opazität für ausgewählte Wahl */
+  background-color: #4CAF50; /* Hervorhebungsfarbe */
+}
+
 .video-choices button {
   padding: 10px 30px;
   font-size: 20px;
@@ -159,6 +170,12 @@
   cursor: pointer;
   border-radius: 10px;
   border: transparent;
+  transition: all 0.4s;
+}
+
+.video-choices button:hover {
+  color: white;
+  background-color: var(--primary-color);
 }
 
 .timer {
