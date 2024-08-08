@@ -103,6 +103,10 @@ const InfoSection = () => {
           />
         </motion.div>
       </div>
+      
+      <div className="info-divide-container">
+        <div className="info-divider"></div>
+      </div>
 
       <div className="info-section">
         <motion.div

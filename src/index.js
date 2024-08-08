@@ -13,7 +13,7 @@ import './styles/contact.css';
 import './styles/about.css';
 import './styles/iframe.css';
 import './styles/projects.css';
-
+import './styles/footer.css';
 
 
 import App from './App';

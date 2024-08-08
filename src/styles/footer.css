@@ -1,0 +1,16 @@
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0px;
+}
+
+.footer-links-cr {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: var(--text-color);
+}

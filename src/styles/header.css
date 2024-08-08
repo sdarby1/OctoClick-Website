@@ -33,11 +33,11 @@ header nav ul{
     z-index: 2000;
 }
 
-/* .hero-background {
+.hero-background {
   background-image: var(--hero-background-image);
   background-size: cover; 
   background-position: center;
-}  */
+} 
 
 .hero-container {
     position: relative;

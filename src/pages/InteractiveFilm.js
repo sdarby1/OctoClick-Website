@@ -13,7 +13,7 @@ const InteractiveFilm = () => {
           <div className="iframe-container">
             <iframe
               title="Custom Video Player"
-              src="http://localhost:3000/videoplayer"
+              src="https://octoclick.de/videoplayer"
               allowFullScreen
             ></iframe>
           </div>

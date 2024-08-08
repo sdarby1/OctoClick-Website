@@ -17,8 +17,9 @@
     transform: rotateY(0deg);
     opacity: 1; /* Set initial image opacity to 1 */
     transform-origin: center center; /* Keep transform-origin consistent */
-    box-shadow: 10px 10px 20px #00a78055;
+    /* box-shadow: 10px 10px 20px #00a78055; */
     border-radius: 10px;
+    filter: grayscale(1);
   }
   
   .perspective-container.transformed img {

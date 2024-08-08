@@ -24,7 +24,7 @@ const CustomVideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const videoContainerRef = useRef(null);
+  const videoContainerRef = useRef(null); 
   const [showChoices, setShowChoices] = useState(false);
   const [progress, setProgress] = useState(0); 
   const [duration, setDuration] = useState(0); 
@@ -60,34 +60,59 @@ const CustomVideoPlayer = () => {
   };
 
   const handleVideoEnd = () => {
-    // Überprüfe, ob eine Auswahl getroffen wurde und das Video zu Ende ist
-    if (nextVideoIndex !== null) {
-      setCurrentIndex(nextVideoIndex); // Wechselt zum nächsten Video
-      setShowChoices(false); // Verbirgt die Auswahlmöglichkeiten
-      setControlsVisible(true); // Zeigt Steuerungselemente an
-      setIsLoading(true); // Zeigt den Ladezustand an, bis das neue Video geladen ist
-      setNextVideoIndex(null); // Setzt die Auswahl zurück
+    if (nextVideoIndex === null) {
+        // Wenn keine Auswahl getroffen wurde, wähle zufällig eine der verfügbaren Optionen
+        if (videoData[currentIndex].choices.length > 0) {
+            const randomChoiceIndex = Math.floor(Math.random() * videoData[currentIndex].choices.length);
+            setCurrentIndex(videoData[currentIndex].choices[randomChoiceIndex].nextIndex);
+        }
+        setShowChoices(false);
+        setControlsVisible(true);
+        setIsLoading(true);
     } else {
-      // Keine Auswahl getroffen, zeige Optionen, wenn verfügbar
-      const hasChoices = videoData[currentIndex].choices.length > 0;
-      setShowChoices(hasChoices);
-      if (hasChoices) {
-        setControlsVisible(false);
-      }
+        // Wenn bereits eine Auswahl getroffen wurde, fahre wie gewohnt fort
+        setCurrentIndex(nextVideoIndex);
+        setShowChoices(false);
+        setControlsVisible(true);
+        setIsLoading(true);
+        setNextVideoIndex(null);  // Setzt den nächsten Videoindex zurück
     }
-  };
+};
+
   
 
-  const handleChoice = (nextIndex) => {
-    // Setze die nächste Videoindex und verberge die Wahlmöglichkeiten sofort
-    setNextVideoIndex(nextIndex);
-    setShowChoices(false); // Diese Zeile sorgt dafür, dass die Optionen sofort verschwinden
   
-    // Du kannst auch hier den Zustand `isLoading` setzen, falls das Video noch weiterlädt,
-    // und es zu Anzeigeproblemen kommt, wenn das nächste Video lädt
-    // setIsLoading(true);
+  useEffect(() => {
+    // Stellen Sie sicher, dass beim ersten Laden keine Wahl getroffen ist
+    setSelectedChoiceIndex(null);
+  }, []);
   
-    // Kein Aufruf von setCurrentIndex hier, da dies in handleVideoEnd gehandhabt wird
+
+  const handleChoice = (nextIndex, choiceIndex) => {
+    setSelectedChoiceIndex(choiceIndex); // Setzt die gewählte Option
+    // Setzen Sie den nächsten Index erst nach Ende des aktuellen Videos
+    videoRef.current.addEventListener('ended', () => {
+      setCurrentIndex(nextIndex);
+      setIsLoading(true);
+      setNextVideoIndex(null); // Zurücksetzen nach dem Wechsel
+      setShowChoices(false);
+      setSelectedChoiceIndex(null); // Zurücksetzen der Auswahl nach dem Wechsel
+    }, { once: true }); // EventListener nach einmaliger Ausführung entfernen
+  };
+  
+  
+  // In der Render-Funktion
+  const renderChoiceButtons = () => {
+    return videoData[currentIndex].choices.map((choice, index) => (
+      <button
+        key={index}
+        className={`choice-button ${selectedChoiceIndex === index ? 'selected' : ''}`}
+        onClick={() => handleChoice(choice.nextIndex, index)}
+        disabled={selectedChoiceIndex !== null} // Buttons sind nur deaktiviert, wenn eine Wahl getroffen wurde
+      >
+        {choice.text}
+      </button>
+    ));
   };
   
   useEffect(() => {
@@ -320,17 +345,20 @@ const CustomVideoPlayer = () => {
       </div>
 
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
-        {showChoices && (
-          <>
-            {videoData[currentIndex].choices.map((choice, index) => (
-             <button key={index} onClick={() => handleChoice(choice.nextIndex)}>
-             {choice.text}
-           </button>
-            ))}
-            <div className="timer">{timer}</div>
-          </>
-        )}
-      </div>
+  {showChoices && videoData[currentIndex].choices.map((choice, index) => (
+    <button
+      key={index}
+      className={`choice-button ${selectedChoiceIndex === index ? 'selected' : ''} ${selectedChoiceIndex !== null ? 'disabled' : ''}`}
+      onClick={() => handleChoice(choice.nextIndex, index)}
+      disabled={selectedChoiceIndex !== null} // Deaktiviere die Buttons nach der Auswahl
+    >
+      {choice.text}
+    </button>
+  ))}
+  <div className="timer">{timer}</div>
+</div>
+
+
       <div className={`progress ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         {formatTime(progress)} / {formatTime(duration)}
         <input 

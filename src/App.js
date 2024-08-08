@@ -12,6 +12,7 @@ import NotFound from './pages/404';
 // import CustomVideoPlayer from './components/CustomVideoPlayer';
 import InteractiveFilm from './pages/InteractiveFilm';
 import CustomVideoPlayer from './components/CustomVideoPlayer';
+import Impressum from './pages/Impressum';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="projects/hofgarten" element={<InteractiveFilm />} />
+            <Route path="impressum" element={<Impressum />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/videoplayer" element={<NoLayout />}>
