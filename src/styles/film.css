@@ -152,19 +152,6 @@
 }
 
 
-.video-choices {
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5); /* Transparenz für bessere Sichtbarkeit auf dem Video */
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .choice-button {
   padding: 10px 30px;
   font-size: 20px;
@@ -199,12 +186,6 @@
   color: #ccc; /* Hält die Textfarbe gleich */
 }
 
-.timer {
-  margin-top: 10px;
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
-}
 
 
 /* .video-choices button {
@@ -223,37 +204,22 @@
   background-color: var(--primary-color);
 } */
 
+.timer-container {
+  visibility: hidden; /* Standardmäßig versteckt */
+  transition: visibility 0.5s linear;
+}
+
+.timer-visible .timer-container {
+  visibility: visible; /* Sichtbar, wenn die Klasse .timer-visible hinzugefügt wird */
+}
+
+
 .timer {
   font-size: 20px;
   font-weight: bold;
   color: white;
 }
 
-.timer-bar-container {
-  position: absolute;
-  bottom: 20px; /* oder an einer anderen geeigneten Stelle, abhängig von deinem Layout */
-  left: 0;
-  right: 0;
-  height: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.progress-bar-container {
-  width: 100%; /* Nutze die volle Breite des Containers */
-  background-color: #ddd; /* Hintergrundfarbe der nicht gefüllten Progressbar */
-  display: flex;
-}
-
-.progress-bar-left, .progress-bar-right {
-  height: 100%;
-  background-color: #ff4500; /* Farbe der gefüllten Progressbar */
-  transition: width 0.5s linear;
-}
-
-.progress-bar-right {
-  border-left: 2px solid #000; /* Trennlinie in der Mitte, wenn gewünscht */
-}
 
 
 

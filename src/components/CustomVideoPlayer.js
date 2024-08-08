@@ -130,20 +130,23 @@ const CustomVideoPlayer = () => {
       timerRef.current = requestAnimationFrame(() => updateTimer(endTime));
     }
   };
+  const [isTimerVisible, setIsTimerVisible] = useState(false);
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const currentTime = videoRef.current.currentTime;
       const videoDuration = videoRef.current.duration;
       const timeLeft = videoDuration - currentTime;
-
+  
       const shouldShowChoices = timeLeft <= 7 && videoData[currentIndex].choices.length > 0;
       setShowChoices(shouldShowChoices);
-
+      setIsTimerVisible(shouldShowChoices); // Steuert die Sichtbarkeit des Timers
+  
       if (shouldShowChoices) {
         const endTime = Date.now() + timeLeft * 1000;
         updateTimer(endTime);
       } else {
+        setTimer(0);
         cancelAnimationFrame(timerRef.current);
         timerRef.current = null;
       }
@@ -355,7 +358,11 @@ const CustomVideoPlayer = () => {
       {choice.text}
     </button>
   ))}
-  <div className="timer">{timer}</div>
+   <div className={`${isTimerVisible ? 'timer-visible' : ''}`}>
+      <div className="timer-container">
+        <div className="timer">{timer}</div>
+      </div>
+    </div>
 </div>
 
 
