@@ -20,6 +20,11 @@
     /* box-shadow: 10px 10px 20px #00a78055; */
     border-radius: 10px;
     filter: grayscale(1);
+    transition: filter 0.4s;
+  }
+
+  .perspective-container img:hover {
+    filter: none;
   }
   
   .perspective-container.transformed img {

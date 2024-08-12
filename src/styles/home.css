@@ -172,12 +172,12 @@ img.florapower-logo {
 }
 
 /** For mobile devices **/
-@media (max-width: 767px) {
-  .custom-shape-divider-top-1723036677 svg {
-      width: calc(100% + 1.3px);
-      height: 34px;
+
+@media (max-width: 1506px) {
+  img.florapower-logo {
+    right: 20%;
   }
-}
+} 
 
 @media (max-width: 1306px) {
   h2.latest-film-headline {
@@ -190,3 +190,23 @@ img.florapower-logo {
     display: none;
   }
 }
+
+@media (max-width: 1050px) {
+  img.florapower-logo {
+    right: 10%;
+  }
+} 
+
+@media (max-width: 767px) {
+  .custom-shape-divider-top-1723036677 svg {
+      width: calc(100% + 1.3px);
+      height: 34px;
+  }
+
+  img.florapower-logo {
+    right: 5%;
+    height: 100px;
+  }
+}
+
+

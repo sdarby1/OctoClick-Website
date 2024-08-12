@@ -4,20 +4,9 @@ import PauseIcon from '../images/icons/pause-icon.svg';
 import FullscreenIcon from '../images/icons/fullscreen.svg';
 import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
 import VolumeIcon from '../images/icons/volume-icon.svg';
+import { useTranslation } from 'react-i18next';
 
-const videoData = [
-  { 
-    src: "/videos/first.mp4", 
-    poster: "/images/thumbnail/thumbnail.jpg", 
-    choices: [{ text: "Das Fahrrad nehmen", nextIndex: 1 }, { text: "Zu Fuß verfolgen", nextIndex: 2 }]
-  },
-  { src: "/videos/bike-choice.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
-  { src: "/videos/foot-choice.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
-  { src: "/videos/third.mp4", choices: [] },
-  { src: "/videos/choice1dot2.mp4", choices: [] },
-  { src: "/videos/choice2dot1.mp4", choices: [] },
-  { src: "/videos/choice2dot2.mp4", choices: [] },
-];
+
 
 const CustomVideoPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,8 +26,23 @@ const CustomVideoPlayer = () => {
   const [volume, setVolume] = useState(1);
   const [nextVideoIndex, setNextVideoIndex] = useState(null); // Neuer Zustand für die Speicherung der nächsten Videoauswahl
   const [selectedChoiceIndex, setSelectedChoiceIndex] = useState(null);
+  const { t } = useTranslation();
 
 
+
+  const videoData = [
+    { 
+      src: "/videos/first.mp4", 
+      poster: "/images/thumbnail/thumbnail.jpg", 
+      choices: [{ text: t('choices.takeBike'), nextIndex: 1 }, { text: t('choices.followOnFoot'), nextIndex: 2 }]
+    },
+    { src: "/videos/bike-choice.mp4", choices: [{ text: "Wahl 1.1", nextIndex: 3 }, { text: "Wahl 1.2", nextIndex: 4 }] },
+    { src: "/videos/foot-choice.mp4", choices: [{ text: "Wahl 2.1", nextIndex: 5 }, { text: "Wahl 2.2", nextIndex: 6 }] },
+    { src: "/videos/third.mp4", choices: [] },
+    { src: "/videos/choice1dot2.mp4", choices: [] },
+    { src: "/videos/choice2dot1.mp4", choices: [] },
+    { src: "/videos/choice2dot2.mp4", choices: [] },
+  ];
 
   useEffect(() => {
     if (currentIndex > 0 && videoRef.current) {
@@ -138,7 +142,7 @@ const CustomVideoPlayer = () => {
       const videoDuration = videoRef.current.duration;
       const timeLeft = videoDuration - currentTime;
   
-      const shouldShowChoices = timeLeft <= 7 && videoData[currentIndex].choices.length > 0;
+      const shouldShowChoices = timeLeft <= 8 && videoData[currentIndex].choices.length > 0;
       setShowChoices(shouldShowChoices);
       setIsTimerVisible(shouldShowChoices); // Steuert die Sichtbarkeit des Timers
   

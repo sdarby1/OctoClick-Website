@@ -41,6 +41,13 @@
       "headline": "Hofgarten - Flora Power"
    },
 
+   "choices": {
+      "takeBike": "Das Fahrrad nehmen",
+      "followOnFoot": "Zu Fuß verfolgen",
+      "choice1.1": "Wahl 1.1",
+      "choice1.2": "Wahl 1.2"
+   },
+    
 
    "showMore": "Mehr anzeigen",
    "showLess": "Weniger anzeigen"
