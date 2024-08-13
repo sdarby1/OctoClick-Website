@@ -36,7 +36,7 @@ const ExpandableText = ({ title, content, initialVisible = false, onToggle }) =>
     },
     visible: {
       opacity: 1,
-      maxHeight: '200px',
+      maxHeight: '350px',
       overflow: 'visible',
       transition: { duration: 0.5 }
     }

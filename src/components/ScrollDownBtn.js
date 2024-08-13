@@ -10,7 +10,7 @@ function ScrollToContentButton() {
   };
 
   return (
-    <button onClick={handleClick} className="scroll-down-btn">
+    <button onClick={handleClick} className="scroll-down-btn" aria-label='Scroll to main section'>
       {/* <img src="/images/icons/scroll-down-icon.svg" alt="Scroll Down"/> */}
         <svg className="scroll-down" id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.68 95.19">
           <defs>

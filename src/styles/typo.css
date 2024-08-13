@@ -29,7 +29,7 @@ h1::after {
 }
 
 h2 {
-    font-size: 4.5em;
+    font-size: 3em;
     color: var(--text-color);
     margin: 0px;
     font-family: VarelaRound;
@@ -52,6 +52,7 @@ h4 {
 
 p {
     line-height: 30px;
+    font-size: 18px;
 }
 
 .page-headline {
@@ -60,8 +61,15 @@ p {
 
 .content-headline {
     margin: 8rem 0rem 3.2rem 0rem;
+    /* color: var(--text-color);
+    background-color: var(--primary-color);
+    width: fit-content;
+    border-radius: 5px */
 }
 
+.contact-headline {
+    margin: 4rem 0rem 2rem 0rem;
+}
 
 
 @media (min-width: 2300px) and (max-width: 4099px) {
@@ -80,6 +88,10 @@ p {
     h1 {
         font-size: 4em;
     }
+
+    h2 {
+        font-size: 3em;
+    }
 }
 
 @media (max-width: 780px) {
@@ -88,7 +100,7 @@ p {
     }
 
     h2 {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     h3 {

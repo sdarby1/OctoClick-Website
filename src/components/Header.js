@@ -27,7 +27,7 @@ const Header = () => {
             </div>
             <HeaderNavigation />
             <div className="social-media-icon-container">
-            <Link to="https://www.instagram.com/octoclick.prod/" target="_blank" rel="noopener noreferrer">
+            <Link to="https://www.instagram.com/octoclick.prod/" target="_blank" rel="noopener noreferrer" alt="to Instagram">
               <svg className="social-icons" id="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.51 31.5">
                 <defs>
                   <style>
@@ -36,7 +36,7 @@ const Header = () => {
                 <path id="Icon_awesome-instagram" data-name="Icon awesome-instagram" className="social-icon-path" d="M15.76,7.67c-4.46,0-8.08,3.62-8.08,8.08s3.62,8.08,8.08,8.08,8.08-3.62,8.08-8.08c0-4.45-3.6-8.07-8.05-8.08,0,0-.02,0-.03,0ZM15.76,21c-2.9,0-5.25-2.35-5.25-5.25,0-2.9,2.35-5.25,5.25-5.25,2.9,0,5.25,2.35,5.25,5.25h0c0,2.9-2.35,5.25-5.25,5.25ZM26.05,7.34c0,1.04-.84,1.88-1.88,1.88s-1.88-.84-1.88-1.88.84-1.88,1.88-1.88c1.04,0,1.88.84,1.88,1.87,0,0,0,0,0,0ZM31.4,9.26c.05-2.45-.86-4.82-2.55-6.6C27.07.98,24.7.07,22.26.11,19.66-.04,11.86-.04,9.26.11c-2.45-.05-4.82.86-6.6,2.54C.98,4.43.06,6.8.11,9.25-.04,11.85-.04,19.65.11,22.25c-.05,2.45.86,4.82,2.55,6.6,1.78,1.68,4.15,2.59,6.6,2.55,2.6.15,10.4.15,13,0,2.45.05,4.82-.86,6.6-2.55,1.68-1.78,2.59-4.15,2.55-6.6.15-2.6.15-10.39,0-12.99h0ZM28.04,25.04c-.54,1.37-1.63,2.46-3,3-2.07.82-7,.63-9.29.63s-7.22.18-9.29-.63c-1.37-.54-2.46-1.63-3-3-.82-2.07-.63-7-.63-9.29s-.18-7.22.63-9.29c.54-1.37,1.63-2.46,3-3,2.07-.82,7-.63,9.29-.63s7.22-.18,9.29.63c1.37.54,2.46,1.63,3,3,.82,2.07.63,7,.63,9.29s.19,7.22-.63,9.29Z"/>
               </svg>
             </Link>
-            <Link to="https://de.linkedin.com/" target="_blank" rel="noopener noreferrer">
+            <Link to="https://de.linkedin.com/" target="_blank" rel="noopener noreferrer" alt="to LinkedIn">
               <svg id="linkedin-icon" className="social-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <defs>
                   <style>
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <HeaderNavigation />
             <div className="social-media-icon-container">
-            <Link to="https://www.instagram.com/octoclick.prod/" target="_blank" rel="noopener noreferrer">
+            <Link to="https://www.instagram.com/octoclick.prod/" target="_blank" rel="noopener noreferrer" alt="to Instagram">
               <svg className="social-icons" id="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.51 31.5">
                 <defs>
                   <style>
@@ -79,7 +79,7 @@ const Header = () => {
                 <path id="Icon_awesome-instagram" data-name="Icon awesome-instagram" className="social-icon-path" d="M15.76,7.67c-4.46,0-8.08,3.62-8.08,8.08s3.62,8.08,8.08,8.08,8.08-3.62,8.08-8.08c0-4.45-3.6-8.07-8.05-8.08,0,0-.02,0-.03,0ZM15.76,21c-2.9,0-5.25-2.35-5.25-5.25,0-2.9,2.35-5.25,5.25-5.25,2.9,0,5.25,2.35,5.25,5.25h0c0,2.9-2.35,5.25-5.25,5.25ZM26.05,7.34c0,1.04-.84,1.88-1.88,1.88s-1.88-.84-1.88-1.88.84-1.88,1.88-1.88c1.04,0,1.88.84,1.88,1.87,0,0,0,0,0,0ZM31.4,9.26c.05-2.45-.86-4.82-2.55-6.6C27.07.98,24.7.07,22.26.11,19.66-.04,11.86-.04,9.26.11c-2.45-.05-4.82.86-6.6,2.54C.98,4.43.06,6.8.11,9.25-.04,11.85-.04,19.65.11,22.25c-.05,2.45.86,4.82,2.55,6.6,1.78,1.68,4.15,2.59,6.6,2.55,2.6.15,10.4.15,13,0,2.45.05,4.82-.86,6.6-2.55,1.68-1.78,2.59-4.15,2.55-6.6.15-2.6.15-10.39,0-12.99h0ZM28.04,25.04c-.54,1.37-1.63,2.46-3,3-2.07.82-7,.63-9.29.63s-7.22.18-9.29-.63c-1.37-.54-2.46-1.63-3-3-.82-2.07-.63-7-.63-9.29s-.18-7.22.63-9.29c.54-1.37,1.63-2.46,3-3,2.07-.82,7-.63,9.29-.63s7.22-.18,9.29.63c1.37.54,2.46,1.63,3,3,.82,2.07.63,7,.63,9.29s.19,7.22-.63,9.29Z"/>
               </svg>
             </Link>
-            <Link to="https://de.linkedin.com/">
+            <Link to="https://de.linkedin.com/" alt="to LinkedIn">
               <svg id="linkedin-icon" className="social-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <defs>
                   <style>

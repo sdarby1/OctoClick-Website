@@ -30,15 +30,19 @@
   display: grid;
   grid-template-columns: 1fr 0.75fr;
 }
-
 .info-container .info-section:nth-child(3) {
   display: grid;
   grid-template-columns: 0.75fr 1fr;
 }
 
+.info-container .info-section:nth-child(5) {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+}
+
 /* Grid-Layout für die Info-Section */
 .info-section {
-  gap: 40px;
+  gap: 20px;
   font-size: 20px;
   /* overflow: hidden; */
 }
@@ -64,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px 0px;
+  margin: 30px 0px;
 }
 
 .info-divider {
@@ -106,10 +110,10 @@ h2.latest-film-headline {
   background-color: white;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   z-index: 10;
   border: 2px solid white;
-  font-size: 24px;
+  font-size: 20px;
   transition: all 0.4s;
 }
 
@@ -180,9 +184,7 @@ img.florapower-logo {
 } 
 
 @media (max-width: 1306px) {
-  h2.latest-film-headline {
-    font-size: 2.4em;
-  }
+
 } 
 
 @media (max-width: 1285px) {

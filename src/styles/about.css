@@ -104,6 +104,11 @@
   grid-template-columns: 1fr;
 }
 
+.info-container .info-section:nth-child(5) {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
     .info-text-container,
     .info-image-container {
       margin: 20px 0;

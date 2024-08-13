@@ -237,14 +237,16 @@ svg.scroll-down {
     color: white;
     text-decoration: none;
     background-color: var(--primary-color);
-    padding: 14px 24px;
+    padding: 10px 20px;
     border-radius: 5px;
     transition: all 0.4s;
     width: fit-content;
+    border: 2px solid var(--primary-color);
   }
 
   .link-to-film:hover {
-    background-color: #007f61;
+    background-color: transparent;
+    color: var(--primary-color);
   }
 
 
