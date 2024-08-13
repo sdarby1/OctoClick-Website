@@ -1,48 +1,9 @@
 import React from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-const mapStyles = [
-  { "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "color": "#00a77f" }] },
-  { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "off" }] },
-  { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] },
-  { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#121212" }] },
-  { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#121212" }, { "weight": 1.2 }] },
-  { "featureType": "administrative.locality", "elementType": "geometry.fill", "stylers": [{ "lightness": "-1" }] },
-  { "featureType": "administrative.neighborhood", "elementType": "labels.text.fill", "stylers": [{ "lightness": "0" }, { "saturation": "0" }] },
-  { "featureType": "administrative.neighborhood", "elementType": "labels.text.stroke", "stylers": [{ "weight": "0.01" }] },
-  { "featureType": "administrative.land_parcel", "elementType": "labels.text.stroke", "stylers": [{ "weight": "0.01" }] },
-  { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#121212" }] },
-  { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#000000" }] },
-  { "featureType": "road", "elementType": "geometry.stroke", "stylers": [{ "visibility": "off" }] },
-  { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#000000" }] },
-  { "featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [{ "color": "#000000" }] },
-  { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#121212" }] },
-  { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#121212" }] },
-  { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#121212" }] },
-  { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }] },
-  { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#353535" }] }
-];
-
-const mapContainerStyle = {
-  width: '100%',
-  height: '500px'
-};
-
-const center = {
-  lat: 53.554781102481215,
-  lng: 9.967709399906724
-};
 
 const Contact = () => {
   return (
-    <LoadScript googleMapsApiKey="YOUR_API_KEY">
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        center={center}
-        zoom={15}
-        options={{ styles: mapStyles }}
-      />
-    </LoadScript>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.0811922130724!2d9.967496977086029!3d53.55631807235095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f6b16876c0d%3A0xe4547029b9726d08!2sSAE%20Institute%20Hamburg!5e0!3m2!1sde!2sde!4v1723472957651!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   );
 }
 

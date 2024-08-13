@@ -49,7 +49,7 @@ const ExpandableText = ({ title, content, initialVisible = false, onToggle }) =>
         animate={isVisible ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <button className="showmore-btn" onClick={toggleVisibility}>
           {isVisible ? t('showLess') : t('showMore')}
         </button>

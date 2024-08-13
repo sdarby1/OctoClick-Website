@@ -89,15 +89,21 @@
   /* Responsives Design */
   @media (max-width: 780px) {
   
+.info-container .info-section {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .info-container .info-section:nth-child(1) {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.info-container .info-section:nth-child(2) {
+.info-container .info-section:nth-child(3) {
   display: grid;
   grid-template-columns: 1fr;
 }
+
     .info-text-container,
     .info-image-container {
       margin: 20px 0;

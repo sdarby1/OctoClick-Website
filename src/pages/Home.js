@@ -36,7 +36,11 @@ const Home = () => {
         </div>
         <div className="margin-container">
           <div className="boxed-container">
-            <h2>{t('info-section.headline')}</h2>
+            <h3 className="content-headline">{t('interactive-film-info.headline')}</h3>
+            {t('interactive-film-info.text').split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+            <h3 className="content-headline">{t('info-section.headline')}</h3>
             <InfoSection />
           </div>
         </div>

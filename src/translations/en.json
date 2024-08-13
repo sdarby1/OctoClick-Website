@@ -19,15 +19,22 @@
      "link": "Our projects"
     },
 
+  "interactive-film-info": {
+   "headline": "Interactive Advertising Film - What Is It?",
+   "text": "An interactive advertising film is more than just a traditional video. It gives viewers the opportunity to actively engage with the storyline and make decisions that influence the course of the film. Instead of passively consuming content, your customers create the experience themselves, choosing the path that appeals to them the most.\n\nThe result? A personalized advertising experience that not only captures attention but also builds a deeper connection with the brand. The interactivity increases engagement time, and the message sticks in the memory more effectively.\n\nInteractive advertising films from OctoClick Productions offer businesses an innovative way to reach their target audience in a completely new way. Take the opportunity to guide your customers on a journey that they actively shape and that will leave a lasting impression."
+   },
+
+
     "info-section": {
         "headline": "Our Departments",
         "title1": "Film section",
         "title2": "Audio section",
         "title3": "Web section",
-        "desc1": "This is an example description for the film section. It is only used to test whether everything works so far.",
+        "desc1": "In the film section of OctoClick there is a well-rehearsed duo, which is both in the content-related as well as in the technical implementation of projects knows. Our strengths lie in the synthesis of creative storytelling and state-of-the-art technology Develop tailor-made commercials that reflect your Captivate the target group.",
         "desc2": "This is an example description for the audio section. It is only used to test whether everything works so far.",
         "desc3": "This is an example description for the web section. It is only used to test whether everything works so far."
      },
+
 
      "about-us": {
          "headline": "About us"

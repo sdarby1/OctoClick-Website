@@ -4,14 +4,12 @@ import useScrollAnimation from '../hooks/UseScrollAnimation';
 import ExpandableText from './ExpandableText';
 import { useTranslation } from 'react-i18next';
 import ImageSlider from '../hooks/ImageSlider';
- // Ensure you import the ImageSlider component
 
- const images1 = [
+const images1 = [
   './images/slider/static.jpg',
   './images/slider/slide1.jpg',
   './images/slider/slide2.jpg',
   './images/slider/slide3.jpg',
-  // Weitere Bilder hier hinzufügen
 ];
 
 const images2 = [
@@ -19,7 +17,13 @@ const images2 = [
   './images/slider/slide1.jpg',
   './images/slider/slide2.jpg',
   './images/slider/slide3.jpg',
-  // Weitere Bilder hier hinzufügen
+];
+
+const images3 = [
+  './images/slider/static.jpg',
+  './images/slider/slide1.jpg',
+  './images/slider/slide2.jpg',
+  './images/slider/slide3.jpg',
 ];
 
 const InfoSection = () => {
@@ -42,29 +46,50 @@ const InfoSection = () => {
   const [ref2, controls2] = useScrollAnimation();
   const [ref3, controls3] = useScrollAnimation();
   const [ref4, controls4] = useScrollAnimation();
+  const [ref5, controls5] = useScrollAnimation();
 
   const [isSlider1Visible, setIsSlider1Visible] = useState(false);
   const [isSlider2Visible, setIsSlider2Visible] = useState(false);
+  const [isSlider3Visible, setIsSlider3Visible] = useState(false);
 
   useEffect(() => {
-    if (!isSlider1Visible) {
-      document.querySelector('.info-section .perspective-container.left').style.setProperty('--current-origin', 'left center');
-      document.querySelector('.info-section .perspective-container.left').style.setProperty('--current-rotate', '20deg');
-      document.querySelector('.info-section .perspective-container.left').classList.add('returning');
-    } else {
-      document.querySelector('.info-section .perspective-container.left').classList.remove('returning');
+    const leftElement = document.querySelector('.info-section .perspective-container.left');
+    if (leftElement) {
+      if (!isSlider1Visible) {
+        leftElement.style.setProperty('--current-origin', 'left center');
+        leftElement.style.setProperty('--current-rotate', '20deg');
+        leftElement.classList.add('returning');
+      } else {
+        leftElement.classList.remove('returning');
+      }
     }
   }, [isSlider1Visible]);
 
   useEffect(() => {
-    if (!isSlider2Visible) {
-      document.querySelector('.info-section .perspective-container.right').style.setProperty('--current-origin', 'right center');
-      document.querySelector('.info-section .perspective-container.right').style.setProperty('--current-rotate', '-20deg');
-      document.querySelector('.info-section .perspective-container.right').classList.add('returning');
-    } else {
-      document.querySelector('.info-section .perspective-container.right').classList.remove('returning');
+    const rightElement = document.querySelector('.info-section .perspective-container.right');
+    if (rightElement) {
+      if (!isSlider2Visible) {
+        rightElement.style.setProperty('--current-origin', 'right center');
+        rightElement.style.setProperty('--current-rotate', '-20deg');
+        rightElement.classList.add('returning');
+      } else {
+        rightElement.classList.remove('returning');
+      }
     }
   }, [isSlider2Visible]);
+
+  useEffect(() => {
+    const middleElement = document.querySelector('.info-section .perspective-container.middle');
+    if (middleElement) {
+      if (!isSlider3Visible) {
+        middleElement.style.setProperty('--current-origin', 'center center');
+        middleElement.style.setProperty('--current-rotate', '0deg');
+        middleElement.classList.add('returning');
+      } else {
+        middleElement.classList.remove('returning');
+      }
+    }
+  }, [isSlider3Visible]);
 
   return (
     <div className="info-container">
@@ -80,9 +105,7 @@ const InfoSection = () => {
           <ImageSlider isVisible={isSlider1Visible} images={images1} direction="left" />
           <svg id="Ebene_1" className="cls-1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
             <defs>
-              <style>
-
-              </style>
+              <style></style>
             </defs>
             <circle cx="95.24" cy="95.24" r="94.74" transform="translate(-39.45 95.24) rotate(-45)"/>
           </svg>
@@ -135,12 +158,48 @@ const InfoSection = () => {
           <ImageSlider isVisible={isSlider2Visible} images={images2} direction="right" />
           <svg id="Ebene_1" className="cls-2" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
             <defs>
-              <style>
-
-              </style>
+              <style></style>
             </defs>
             <circle cx="95.24" cy="95.24" r="94.74" transform="translate(-39.45 95.24) rotate(-45)"/>
           </svg>
+        </motion.div>
+      </div>
+
+      <div className="info-divide-container">
+        <div className="info-divider"></div>
+      </div>
+
+      <div className="info-section">
+        <motion.div
+          className="info-image-container"
+          initial="hidden"
+          animate={controls5}
+          custom="left"
+          variants={sectionVariants}
+          ref={ref5}
+        >
+          <ImageSlider isVisible={isSlider3Visible} images={images3} direction="left" />
+          <svg id="Ebene_1" className="cls-3" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
+            <defs>
+              <style></style>
+            </defs>
+            <circle cx="95.24" cy="95.24" r="94.74" transform="translate(-39.45 95.24) rotate(-45)"/>
+          </svg>
+        </motion.div>
+
+        <motion.div
+          className="info-text-container"
+          initial="hidden"
+          animate={controls5}
+          custom="right"
+          variants={sectionVariants}
+          ref={ref5}
+        >
+          <ExpandableText
+            title={t('info-section.title3')}
+            content={t('info-section.desc3')}
+            onToggle={setIsSlider3Visible}
+          />
         </motion.div>
       </div>
     </div>
