@@ -36,7 +36,7 @@ const HeaderNavigation = () => {
         <ul>
             <li><NavLink activeclassname="active" className="nav-btn" to="/" onClick={() => setIsOpen(false)} data-text={t('navbar.home')}>{t('navbar.home')}</NavLink></li>
             <li><NavLink activeclassname="active" className="nav-btn" to="/about" onClick={() => setIsOpen(false)} data-text={t('navbar.about')}>{t('navbar.about')}</NavLink></li>
-            <Link to="/"><img src="/images/logo/OctoClick-Logo.svg" alt="logo" width="60px;"/></Link>
+            <li><Link to="/"><img src="/images/logo/OctoClick-Logo.svg" alt="logo" width="60px;"/></Link></li>
             <li><NavLink activeclassname="active" className="nav-btn" to="/projects" onClick={() => setIsOpen(false)} data-text={t('navbar.project')}>{t('navbar.project')}</NavLink></li>
             <li><NavLink activeclassname="active" className="nav-btn" to="/contact" onClick={() => setIsOpen(false)} data-text={t('navbar.contact')}>{t('navbar.contact')}</NavLink></li>
         </ul>

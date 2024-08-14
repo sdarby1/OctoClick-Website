@@ -83,7 +83,7 @@
   
   .info-text-container, .info-image-container {
     flex: 1;
-    margin: 0 10px;
+    margin: 0 0px;
   }
   
   /* Responsives Design */
@@ -111,7 +111,7 @@
 
     .info-text-container,
     .info-image-container {
-      margin: 20px 0;
+      margin: 0px;
     }
   
     .hidden.from-left,

@@ -6,17 +6,19 @@ import { useTranslation } from 'react-i18next';
 import ImageSlider from '../hooks/ImageSlider';
 
 const images1 = [
-  './images/slider/static.jpg',
-  './images/slider/slide1.jpg',
-  './images/slider/slide2.jpg',
-  './images/slider/slide3.jpg',
+  './images/slider/film/film-slide-1.jpg',
+  './images/slider/film/film-slide-2.jpg',
+  './images/slider/film/film-slide-3.jpg',,
+  './images/slider/film/film-slide-4.jpg',
+  './images/slider/film/film-slide-5.jpg',
+  './images/slider/film/film-slide-6.jpg',
 ];
 
 const images2 = [
-  './images/slider/static.jpg',
-  './images/slider/slide1.jpg',
-  './images/slider/slide2.jpg',
-  './images/slider/slide3.jpg',
+  './images/slider/audio/audio-slide-1.jpg',
+  './images/slider/audio/audio-slide-2.jpg',
+  './images/slider/audio/audio-slide-3.jpg',
+  './images/slider/audio/audio-slide-4.jpg',
 ];
 
 const images3 = [

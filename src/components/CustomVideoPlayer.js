@@ -4,9 +4,8 @@ import PauseIcon from '../images/icons/pause-icon.svg';
 import FullscreenIcon from '../images/icons/fullscreen.svg';
 import ExitFullscreenIcon from '../images/icons/exit-fullscreen.svg';
 import VolumeIcon from '../images/icons/volume-icon.svg';
+import MuteIcon from '../images/icons/mute-icon.svg'; // Icon für den stummgeschalteten Zustand
 import { useTranslation } from 'react-i18next';
-
-
 
 const CustomVideoPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,11 +23,10 @@ const CustomVideoPlayer = () => {
   const timerRef = useRef(null);
   const [showVolumeControl, setShowVolumeControl] = useState(false); 
   const [volume, setVolume] = useState(1);
-  const [nextVideoIndex, setNextVideoIndex] = useState(null); // Neuer Zustand für die Speicherung der nächsten Videoauswahl
+  const [isMuted, setIsMuted] = useState(false); // Neuer Zustand für Stummschaltung
+  const [nextVideoIndex, setNextVideoIndex] = useState(null);
   const [selectedChoiceIndex, setSelectedChoiceIndex] = useState(null);
   const { t } = useTranslation();
-
-
 
   const videoData = [
     { 
@@ -63,67 +61,65 @@ const CustomVideoPlayer = () => {
     }
   };
 
+  const toggleMute = () => {
+    if (videoRef.current) {
+      if (videoRef.current.muted) {
+        videoRef.current.muted = false;
+        setIsMuted(false);
+        setVolume(videoRef.current.volume); // Setzt den Balken auf die aktuelle Lautstärke
+      } else {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+        setVolume(0); // Setzt den Balken visuell auf 0
+      }
+    }
+  };
+
   const handleVideoEnd = () => {
     if (nextVideoIndex === null) {
-        // Wenn keine Auswahl getroffen wurde, wähle zufällig eine der verfügbaren Optionen
-        if (videoData[currentIndex].choices.length > 0) {
-            const randomChoiceIndex = Math.floor(Math.random() * videoData[currentIndex].choices.length);
-            setCurrentIndex(videoData[currentIndex].choices[randomChoiceIndex].nextIndex);
-        }
-        setShowChoices(false);
-        setControlsVisible(true);
-        setIsLoading(true);
+      if (videoData[currentIndex].choices.length > 0) {
+        const randomChoiceIndex = Math.floor(Math.random() * videoData[currentIndex].choices.length);
+        setCurrentIndex(videoData[currentIndex].choices[randomChoiceIndex].nextIndex);
+      }
+      setShowChoices(false);
+      setControlsVisible(true);
+      setIsLoading(true);
     } else {
-        // Wenn bereits eine Auswahl getroffen wurde, fahre wie gewohnt fort
-        setCurrentIndex(nextVideoIndex);
-        setShowChoices(false);
-        setControlsVisible(true);
-        setIsLoading(true);
-        setNextVideoIndex(null);  // Setzt den nächsten Videoindex zurück
+      setCurrentIndex(nextVideoIndex);
+      setShowChoices(false);
+      setControlsVisible(true);
+      setIsLoading(true);
+      setNextVideoIndex(null);
     }
-};
+  };
 
-  
-
-  
   useEffect(() => {
-    // Stellen Sie sicher, dass beim ersten Laden keine Wahl getroffen ist
     setSelectedChoiceIndex(null);
   }, []);
-  
 
   const handleChoice = (nextIndex, choiceIndex) => {
-    setSelectedChoiceIndex(choiceIndex); // Setzt die gewählte Option
-    // Setzen Sie den nächsten Index erst nach Ende des aktuellen Videos
+    setSelectedChoiceIndex(choiceIndex);
     videoRef.current.addEventListener('ended', () => {
       setCurrentIndex(nextIndex);
       setIsLoading(true);
-      setNextVideoIndex(null); // Zurücksetzen nach dem Wechsel
+      setNextVideoIndex(null);
       setShowChoices(false);
-      setSelectedChoiceIndex(null); // Zurücksetzen der Auswahl nach dem Wechsel
-    }, { once: true }); // EventListener nach einmaliger Ausführung entfernen
+      setSelectedChoiceIndex(null);
+    }, { once: true });
   };
-  
-  
-  // In der Render-Funktion
+
   const renderChoiceButtons = () => {
     return videoData[currentIndex].choices.map((choice, index) => (
       <button
         key={index}
         className={`choice-button ${selectedChoiceIndex === index ? 'selected' : ''}`}
         onClick={() => handleChoice(choice.nextIndex, index)}
-        disabled={selectedChoiceIndex !== null} // Buttons sind nur deaktiviert, wenn eine Wahl getroffen wurde
+        disabled={selectedChoiceIndex !== null}
       >
         {choice.text}
       </button>
     ));
   };
-  
-  useEffect(() => {
-    if (nextVideoIndex !== null) {
-      // Optional: Hier könnten Vorbereitungen für das nächste Video getroffen werden
-    }
-  }, [nextVideoIndex]);
 
   const updateTimer = (endTime) => {
     const now = Date.now();
@@ -134,6 +130,7 @@ const CustomVideoPlayer = () => {
       timerRef.current = requestAnimationFrame(() => updateTimer(endTime));
     }
   };
+
   const [isTimerVisible, setIsTimerVisible] = useState(false);
 
   const handleTimeUpdate = () => {
@@ -141,11 +138,11 @@ const CustomVideoPlayer = () => {
       const currentTime = videoRef.current.currentTime;
       const videoDuration = videoRef.current.duration;
       const timeLeft = videoDuration - currentTime;
-  
+
       const shouldShowChoices = timeLeft <= 8 && videoData[currentIndex].choices.length > 0;
       setShowChoices(shouldShowChoices);
-      setIsTimerVisible(shouldShowChoices); // Steuert die Sichtbarkeit des Timers
-  
+      setIsTimerVisible(shouldShowChoices);
+
       if (shouldShowChoices) {
         const endTime = Date.now() + timeLeft * 1000;
         updateTimer(endTime);
@@ -233,6 +230,8 @@ const CustomVideoPlayer = () => {
     const volume = parseFloat(event.target.value);
     if (videoRef.current) {
       videoRef.current.volume = volume;
+      videoRef.current.muted = volume === 0;
+      setIsMuted(volume === 0);
     }
     setVolume(volume);
   };
@@ -323,13 +322,14 @@ const CustomVideoPlayer = () => {
         webkit-playsinline="true"
       />
 
-      <div className={`video-controls-up ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
-        <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
-          {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
-        </button>
+      <div 
+        className={`video-controls-up ${controlsVisible && !showChoices ? '' : 'hidden'}`}
+        onMouseEnter={() => setShowVolumeControl(true)}
+        onMouseLeave={() => setShowVolumeControl(false)}
+      >
         <div className="volume-section">
-          <button className='volume-btn' onClick={() => setShowVolumeControl(!showVolumeControl)}>
-            <img src={VolumeIcon} alt="Volume Control" />
+          <button className='volume-btn' onClick={toggleMute}>
+            <img src={isMuted ? MuteIcon : VolumeIcon} alt="Volume Control" />
           </button>
           {showVolumeControl && (
             <input 
@@ -352,40 +352,18 @@ const CustomVideoPlayer = () => {
       </div>
 
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
-  {showChoices && videoData[currentIndex].choices.map((choice, index) => (
-    <button
-      key={index}
-      className={`choice-button ${selectedChoiceIndex === index ? 'selected' : ''} ${selectedChoiceIndex !== null ? 'disabled' : ''}`}
-      onClick={() => handleChoice(choice.nextIndex, index)}
-      disabled={selectedChoiceIndex !== null} // Deaktiviere die Buttons nach der Auswahl
-    >
-      {choice.text}
-    </button>
-  ))}
-   <div className={`${isTimerVisible ? 'timer-visible' : ''}`}>
-      <div className="timer-container">
-        <div className="timer">{timer}</div>
+        {showChoices && renderChoiceButtons()}
+        <div className={`${isTimerVisible ? 'timer-visible' : ''}`}>
+          <div className="timer-container">
+            <div className="timer">{timer}</div>
+          </div>
+        </div>
       </div>
-    </div>
-</div>
-
 
       <div className={`progress ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
-        {formatTime(progress)} / {formatTime(duration)}
-        <input 
-          type="range" 
-          className="progress-bar"
-          min="0" 
-          max={duration} 
-          value={progress} 
-          onChange={(e) => {
-            const time = parseFloat(e.target.value);
-            if (videoRef.current) {
-              videoRef.current.currentTime = time;
-            }
-            setProgress(time);
-          }}
-        />
+        <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
+          {isFullScreen ? <img src={ExitFullscreenIcon} alt="Exit Fullscreen" /> : <img src={FullscreenIcon} alt="Go Fullscreen" />}
+        </button>
       </div>
     </div>
   );
