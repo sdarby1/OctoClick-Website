@@ -7,3 +7,7 @@
 .map-section {
     height: 50vh;
 }
+
+.contact-information p {
+    text-align: start;
+}

@@ -194,8 +194,8 @@ img.florapower-logo {
 }
 
 .slider {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
   display: flex;
   align-items: center;
   height: 120px; /* Angepasst für den Text und das Logo */
