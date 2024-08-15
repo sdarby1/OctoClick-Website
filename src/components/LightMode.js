@@ -24,7 +24,7 @@ function LightMode() {
     <div style={{  color: 'var(--text-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <label className="switch">
         <input type="checkbox" onChange={toggleTheme} checked={theme === 'light'} />
-        <span className="slider">
+        <span className="slider-mode">
           <img src={moonIcon} alt="Moon Icon" className="icon moon-icon" />
           <img src={sunIcon} alt="Sun Icon" className="icon sun-icon" />
         </span>

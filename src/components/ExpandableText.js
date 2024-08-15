@@ -43,7 +43,7 @@ const ExpandableText = ({ title, content, initialVisible = false, onToggle }) =>
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', textAlign: 'center' }}>
       <motion.div
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}

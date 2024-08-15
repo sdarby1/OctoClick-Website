@@ -51,6 +51,8 @@ h4 {
 
 
 p {
+    max-width: 1000px;
+    text-align: center;
     line-height: 30px;
     font-size: 18px;
 }
@@ -62,10 +64,21 @@ p {
 .content-headline {
     margin: 8rem 0rem 3.2rem 0rem;
     color: var(--text-color);
-    background-color: var(--primary-color);
+    text-align: center;
     width: fit-content;
     border-radius: 5px
 } 
+
+.headline-end {
+    font-size: 100px;
+    line-height: 0%;
+    color: var(--primary-color);
+}
+
+.headline-question-end {
+    color: var(--primary-color);
+    margin-left: 5px;
+}
 
 .contact-headline {
     margin: 4rem 0rem 2rem 0rem;

@@ -8,7 +8,7 @@ import ImageSlider from '../hooks/ImageSlider';
 const images1 = [
   './images/slider/film/film-slide-1.jpg',
   './images/slider/film/film-slide-2.jpg',
-  './images/slider/film/film-slide-3.jpg',,
+  './images/slider/film/film-slide-3.jpg',
   './images/slider/film/film-slide-4.jpg',
   './images/slider/film/film-slide-5.jpg',
   './images/slider/film/film-slide-6.jpg',
@@ -95,6 +95,10 @@ const InfoSection = () => {
 
   return (
     <div className="info-container">
+            <h2 className="content-headline">
+              Unsere Expertise auf<br></br>
+              einem Blick<span className="headline-end">.</span>
+            </h2>
       <div className="info-section">
         <motion.div
           className="info-image-container"

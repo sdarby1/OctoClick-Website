@@ -36,7 +36,7 @@
     height: 0;
   }
   
-  .slider {
+  .slider-mode {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -48,7 +48,7 @@
     border-radius: 25px;
   }
   
-  .slider:before {
+  .slider-mode:before {
     position: absolute;
     content: "";
     height: 20px;

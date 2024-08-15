@@ -23,7 +23,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin: 80px 0;
+  align-items: center;
 }
 
 .info-container .info-section:nth-child(1) {
@@ -43,7 +43,6 @@
 /* Grid-Layout für die Info-Section */
 .info-section {
   gap: 20px;
-  font-size: 20px;
   /* overflow: hidden; */
 }
 
@@ -175,6 +174,62 @@ img.florapower-logo {
   right: 30%;
   bottom: -40px;
 }
+
+
+.our-strengths-container, .explain-film-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-to-about {
+  color: var(--primary-color);
+}
+
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-300px * 10)); } /* Gesamte Breite für 10 Slides */
+}
+
+.slider {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  display: flex;
+  align-items: center;
+  height: 120px; /* Angepasst für den Text und das Logo */
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.slide-track {
+  display: flex;
+  animation: scroll 40s linear infinite; /* Dauer angepasst, um den Übergang fließend zu machen */
+  width: calc(300px * 10 * 2); /* Breite für doppelte Anzahl an Slides */
+}
+
+.slide {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  height: 150px;
+  white-space: nowrap;
+}
+
+.slide h3 {
+  margin: 0 80px;
+  font-size: 2rem;
+  color: var(--text-color);
+}
+
+.slide img {
+  height: 80px;
+  width: auto;
+}
+
+
 
 /** For mobile devices **/
 

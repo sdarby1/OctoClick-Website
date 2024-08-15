@@ -19,10 +19,18 @@
     "link": "Unsere Projekte"
    },
 
-   "interactive-film-info": {
-      "headline": "Interaktiver Werbefilm - Was ist das eigentlich?",
-      "text": "Ein interaktiver Werbefilm ist mehr als nur ein klassisches Video. Er gibt den Zuschauern die Möglichkeit, aktiv in die Handlung einzugreifen und Entscheidungen zu treffen, die den Verlauf des Films beeinflussen. Statt passiv Inhalte zu konsumieren, gestalten Ihre Kunden selbst das Erlebnis und wählen den Weg, der sie am meisten anspricht.\n\nDas Ergebnis? Ein personalisiertes Werbeerlebnis, das nicht nur die Aufmerksamkeit fesselt, sondern auch eine tiefere Verbindung zur Marke aufbaut. Durch die Interaktivität steigt die Verweildauer, und die Botschaft bleibt nachhaltig im Gedächtnis haften.\n\nInteraktive Werbefilme von OctoClick Productions bieten Unternehmen eine innovative Möglichkeit, ihre Zielgruppe auf eine völlig neue Weise zu erreichen. Nutzen Sie die Chance, Ihre Kunden mit auf eine Reise zu nehmen, die sie aktiv gestalten und die sie nachhaltig begeistern wird."
+
+   "explain-film": {
+      "headline": "Interaktive Werbefilme,<1 />Was ist das überhaupt",
+      "text": "Interaktive Werbefilme bieten Ihnen die Möglichkeit, Ihre Zielgruppe aktiv in das Geschehen einzubinden und eine <strong>maßgeschneiderte Nutzererfahrung</strong> zu schaffen. Aber was bedeutet das konkret? Es geht darum, Ihre Kunden in den Mittelpunkt zu stellen und ihnen durch <strong>Entscheidungsoptionen</strong> und <strong>personalisierte Inhalte</strong> ein Erlebnis zu bieten, das sie nicht vergessen.<br /><br /><Link>Erfahren Sie mehr über uns</Link> und wie wir Ihnen helfen können, Ihre Marke interaktiv und zukunftsorientiert zu präsentieren."
+    },
+    
+
+   "our-strengths": {
+      "headline": "Interaktive Werbung,<1 />Kreatives Storytelling,<1 />Erfolgreiche Kampagne",
+      "text": "Wir entwickeln, gestalten und realisieren für Sie <strong>maßgeschneiderte</strong> Werbefilme, die Ihre Kunden <strong>fesseln</strong> und Ihr Unternehmen <strong>nachhaltig</strong> in Erinnerung bleiben lassen. Mit unserer Expertise in der Produktion interaktiver Inhalte und einem klaren Fokus auf <strong>zielgerichtetes Marketing</strong> unterstützen wir Sie dabei, Ihre Ziele zu erreichen und Ihr Publikum nachhaltig zu begeistern. Vertrauen Sie auf unsere Erfahrung, und schaffen Sie mit uns <strong>unvergessliche</strong> Erlebnisse, die Ihre Marke stärken."
    },
+    
 
    "info-section": {
       "headline": "Unsere Fachbereiche",

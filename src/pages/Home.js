@@ -1,6 +1,9 @@
 import InfoSection from "../components/InfoSection"
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import OurStrengths from "../components/OurStrengths";
+import ExplainFilm from "../components/ExplainFilm";
+import LatestProjectCarousel from "../components/LatestProjectCarousel";
 
 const Home = () => {
 
@@ -8,7 +11,7 @@ const Home = () => {
 
     return (
       <>
-        <div className="latest-film">
+        {/* <div className="latest-film">
         <svg id="Ebene_1" className="cls-3" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190.47 190.47">
             <defs>
               <style>
@@ -33,14 +36,16 @@ const Home = () => {
                 <path d="M1200 0L0 0 598.97 114.72 1200 0z" className="shape-fill"></path>
             </svg>
             <img className="florapower-logo" src="./images/hofgarten/florapower-logo.png" alt="Flora Power Logo"/>
+        </div> */}
+        <LatestProjectCarousel />
+        <div className="margin-container">
+          <div className="boxed-container">
+            <OurStrengths />
+          </div>
         </div>
         <div className="margin-container">
           <div className="boxed-container">
-            <h3 className="content-headline">{t('interactive-film-info.headline')}</h3>
-            {t('interactive-film-info.text').split('\n\n').map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-            <h3 className="content-headline">{t('info-section.headline')}</h3>
+            <ExplainFilm />
             <InfoSection />
           </div>
         </div>
