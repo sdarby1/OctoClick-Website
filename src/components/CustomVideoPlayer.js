@@ -309,7 +309,9 @@ const CustomVideoPlayer = () => {
 
   return (
     <div ref={videoContainerRef} className={`video-container ${isFullScreen ? 'fullscreen' : ''}`} style={{ height: '100%' }}>
-      {isLoading && <div className="loading-placeholder"></div>}
+      {isLoading && <div className="loading-placeholder">
+        <span className='loader'></span>
+        </div>}
       <video 
         className={`film ${isLoading ? 'hidden' : ''}`}
         ref={videoRef} 

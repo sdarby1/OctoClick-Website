@@ -302,7 +302,7 @@ svg.scroll-down {
         right: -100%; /* Startet außerhalb des Bildschirms */
         height: 100vh;
         width: 100%; /* oder eine spezifische Breite */
-        background-color: var(--nav-background);
+        background-color: var(--background-color);
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -127,15 +127,19 @@
 
 .video-choices {
   position: absolute;
-  bottom: 20px; /* Abstand vom unteren Rand */
+  bottom: 0px; /* Abstand vom unteren Rand */
+  padding: 50px 0px;
   left: 50%;
   transform: translateX(-50%) translateY(100%); /* Zentriert den Container horizontal */
   z-index: 100; /* Stellt sicher, dass die Buttons über dem Video liegen */
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px; /* Abstand zwischen den Buttons */
+  justify-content: center;
+  gap: 30px; /* Abstand zwischen den Buttons */
   transition: all 0.5s ease-in-out;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.435);
 }
 
 .show-choices {
@@ -154,7 +158,7 @@
 
 .choice-button {
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 22px;
   background-color: white;
   color: #00A77F;
   cursor: pointer;
@@ -166,6 +170,7 @@
 .choice-button:hover {
   color: white;
   background-color: var(--primary-color);
+  transform: scale(1.1);
 }
 
 .choice-button.selected {
@@ -184,6 +189,7 @@
 .choice-button.disabled:hover {
   background-color: #f9f9f9; /* Verhindert Farbänderung beim Hover */
   color: #ccc; /* Hält die Textfarbe gleich */
+  transform: scale(1);
 }
 
 
@@ -206,7 +212,7 @@
 
 .timer-container {
   visibility: hidden; /* Standardmäßig versteckt */
-  transition: visibility 0.5s linear;
+  transition: visibility 0.2s linear;
 }
 
 .timer-visible .timer-container {
@@ -296,12 +302,44 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .loading-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 200px;
-  height: 100px;
-  background-color: rgb(255, 0, 0);
+  top: 50%;
+  left: 50%;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+.loader::before , .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
+}
+.loader::after{
+  transform: rotate3d(90, 90, 0, 180deg );
+  border-color: var(--primary-color);
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
 }
 
 
@@ -312,9 +350,9 @@ input[type="range"]::-moz-range-thumb {
     overflow: hidden;
   }
 
-  .video-choices button {
+  .choice-button {
     padding: 10px 30px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .play-btn img, .volume-btn img {
