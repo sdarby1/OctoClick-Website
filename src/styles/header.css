@@ -282,7 +282,17 @@ svg.scroll-down {
   
   
   
-  
+  @media (max-height: 790px) and (min-width: 1400px) {
+    .hero-title-section {
+      padding-top: 20%;
+    }
+  }
+
+  @media (max-height: 725px) and (min-width: 1400px) {
+    .hero-title-section {
+      padding-top: 15%;
+    }
+  }
 
 
 @media (max-width: 780px) {

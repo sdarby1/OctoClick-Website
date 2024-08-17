@@ -350,15 +350,22 @@ const CustomVideoPlayer = () => {
           {isPlaying ? <img src={PauseIcon} alt="Pause" /> : <img src={PlayIcon} alt="Play" />}
         </button>
       </div>
-
       <div className={`video-choices ${showChoices ? 'show-choices' : ''}`}>
-        {showChoices && renderChoiceButtons()}
-        <div className={`${isTimerVisible ? 'timer-visible' : ''}`}>
-          <div className="timer-container">
-            <div className="timer">{timer}</div>
-          </div>
-        </div>
+  {showChoices && videoData[currentIndex].choices.map((choice, index) => (
+    <button
+      key={index}
+      className={`choice-button ${selectedChoiceIndex === index ? 'selected' : ''} ${selectedChoiceIndex !== null ? 'disabled' : ''}`}
+      onClick={() => handleChoice(choice.nextIndex, index)}
+      disabled={selectedChoiceIndex !== null} // Deaktiviere die Buttons nach der Auswahl
+    >
+      {choice.text}
+    </button>
+  ))}
+   <div className={`${isTimerVisible ? 'timer-visible' : ''}`}>
+      <div className="timer-container">
+        <div className="timer">{timer}</div>
       </div>
+    </div></div>
 
       <div className={`progress ${controlsVisible && !showChoices ? '' : 'hidden'}`}>
         <button className={`fullscreen-btn ${controlsVisible && !showChoices ? '' : 'hidden'}`} onClick={() => isFullScreen ? exitFullScreen() : enterFullScreen()}>
