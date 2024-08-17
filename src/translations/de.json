@@ -63,6 +63,15 @@
     
 
    "showMore": "Mehr anzeigen",
-   "showLess": "Weniger anzeigen"
+   "showLess": "Weniger anzeigen",
+
+   "notfound": {
+      "headline": "Fehler 404",
+      "text": "Diese Seite konnte nicht gefunden werden",
+      "link": "Zurück zu Startseite"
+   }
+
+
+
 }
 

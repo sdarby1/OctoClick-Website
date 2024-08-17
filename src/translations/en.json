@@ -34,34 +34,34 @@
     
 
 
-    "info-section": {
-        "headline": "Our Departments",
-        "title1": "Film section",
-        "title2": "Audio section",
-        "title3": "Web section",
-        "desc1": "In the film section of OctoClick there is a well-rehearsed duo, which is both in the content-related as well as in the technical implementation of projects knows. Our strengths lie in the synthesis of creative storytelling and state-of-the-art technology Develop tailor-made commercials that reflect your Captivate the target group.",
-        "desc2": "This is an example description for the audio section. It is only used to test whether everything works so far.",
-        "desc3": "This is an example description for the web section. It is only used to test whether everything works so far."
-     },
+   "info-section": {
+      "headline": "Our Departments",
+      "title1": "Film section",
+      "title2": "Audio section",
+      "title3": "Web section",
+      "desc1": "In the film section of OctoClick there is a well-rehearsed duo, which is both in the content-related as well as in the technical implementation of projects knows. Our strengths lie in the synthesis of creative storytelling and state-of-the-art technology Develop tailor-made commercials that reflect your Captivate the target group.",
+      "desc2": "This is an example description for the audio section. It is only used to test whether everything works so far.",
+      "desc3": "This is an example description for the web section. It is only used to test whether everything works so far."
+   },
 
 
-     "about-us": {
-         "headline": "About us"
-      },
+   "about-us": {
+      "headline": "About us"
+   },
 
-      "projects": {
-         "headline": "Projects"
-      },
+   "projects": {
+      "headline": "Projects"
+   },
 
-      "breadcrumbs": {
-         "home": "Home",
-         "projects": "Projects",
-         "about": "About Us",
-         "contact": "Contact",
-         "hofgarten": "Hofgarten - Flora Power"
-    },
+   "breadcrumbs": {
+      "home": "Home",
+      "projects": "Projects",
+      "about": "About Us",
+      "contact": "Contact",
+      "hofgarten": "Hofgarten - Flora Power"
+   },
 
-    "film-page": {
+   "film-page": {
       "headline": "Hofgarten - Flora Power"
    },
 
@@ -72,6 +72,13 @@
     "choice1.2": "Choice 1.2"
   },
 
-    "showMore": "Show more",
-    "showLess": "Show less"
+   "showMore": "Show more",
+   "showLess": "Show less",
+
+   "notfound": {
+      "headline": "Error 404",
+      "text": "This page could not be found",
+         "link": "Back Home"
+   }
+
  }

@@ -10,7 +10,7 @@ const About = () => {
       <div className="boxed-container">
 
 
-        <h2 className='page-headline'>{t('about-us.headline')}</h2>
+        <h2 className='page-headline'>{t('about-us.headline')}<span className="headline-end">.</span></h2>
 
         
       </div>

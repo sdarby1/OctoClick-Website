@@ -1,8 +1,16 @@
+
+
 .footer-content {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 80px 0px;
+    font-size: 14px;
+}
+
+.footer-content p {
+    font-size: 14px;
 }
 
 .footer-links-cr {
@@ -14,3 +22,14 @@
     text-decoration: none;
     color: var(--text-color);
 }
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-content p {
+        line-height: 20px ;
+    }  
+  }

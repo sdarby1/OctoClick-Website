@@ -14,6 +14,7 @@ import './styles/about.css';
 import './styles/iframe.css';
 import './styles/projects.css';
 import './styles/footer.css';
+import './styles/notfound.css';
 
 
 import App from './App';

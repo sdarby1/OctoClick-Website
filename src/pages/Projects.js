@@ -8,7 +8,7 @@ const Projects = () => {
     <div className="margin-container">
        <div className="boxed-container">
           <div>
-          <h2 className='page-headline'>{t('projects.headline')}</h2>
+          <h2 className='page-headline'>{t('projects.headline')}<span className="headline-end">.</span></h2>
               <div class="project-container">
               <Link to="/projects/hofgarten" className="link-to-project">
                 <div className="project">
