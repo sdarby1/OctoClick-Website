@@ -33,7 +33,7 @@
     
 
    "info-section": {
-      "headline": "Unsere Fachbereiche",
+      "headline": "Unsere Expertise auf<1 />einen Blick",
       "title1": "Filmbereich",
       "title2": "Audiobereich",
       "title3": "Webbereich",
@@ -43,7 +43,8 @@
    },
 
    "about-us": {
-      "headline": "Über uns"
+      "headline": "Über uns",
+      "text": "Unser Ziel ist es, interaktive Werbefilme zu produzieren, die innovative Wege der Produktvermarktung eröffnen. Aktuell arbeiten wir an einem spannenden Projekt zur Bewerbung eines einzigartigen Getränkes. Unsere interaktive Werbung wird nicht nur die Werbeziele unseres Kunden effektiv unterstützen, sondern auch die Zuschauer auf eine neue Art einbinden, indem er sie dazu anregt, sich aktiv mit dem Produkt auseinanderzusetzen. Für die Fertigstellung der definieren wir klare Meilensteine und Fortschrittsmessungen haben, um sicherzustellen, dass wir unsere hohen Qualitätsstandards einhalten. Unser Team setzt sich aus talentierten Film-, Audio- und Web-Development-Studenten zusammen, die ihre individuellen Stärken und Fachkenntnisse bündeln, um das Projekt erfolgreich umzusetzen."
    },
 
    "projects": {
@@ -69,7 +70,10 @@
       "headline": "Fehler 404",
       "text": "Diese Seite konnte nicht gefunden werden",
       "link": "Zurück zu Startseite"
-   }
+   },
+
+   "legal-notice": "Impressum",
+   "privacy-policy": "Datenschutz"
 
 
 

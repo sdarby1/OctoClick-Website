@@ -294,6 +294,12 @@ svg.scroll-down {
     }
   }
 
+  @media (max-height: 725px) and (max-width: 1400px) {
+    .hero-title-section {
+      padding-top: 15%;
+    }
+  }
+
 
 @media (max-width: 780px) {
     header nav {

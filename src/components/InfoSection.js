@@ -4,6 +4,7 @@ import useScrollAnimation from '../hooks/UseScrollAnimation';
 import ExpandableText from './ExpandableText';
 import { useTranslation } from 'react-i18next';
 import ImageSlider from '../hooks/ImageSlider';
+import InfoHeadline from './InfoHeadline';
 
 const images1 = [
   './images/slider/film/film-slide-1.jpg',
@@ -95,10 +96,7 @@ const InfoSection = () => {
 
   return (
     <div className="info-container">
-            <h2 className="content-headline">
-              Unsere Expertise auf<br></br>
-              einem Blick<span className="headline-end">.</span>
-            </h2>
+            <InfoHeadline />
       <div className="info-section">
         <motion.div
           className="info-image-container"

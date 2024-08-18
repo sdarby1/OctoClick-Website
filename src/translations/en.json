@@ -35,7 +35,7 @@
 
 
    "info-section": {
-      "headline": "Our Departments",
+      "headline": "Our expertise at<1 />a glance",
       "title1": "Film section",
       "title2": "Audio section",
       "title3": "Web section",
@@ -46,7 +46,8 @@
 
 
    "about-us": {
-      "headline": "About us"
+      "headline": "About us",
+      "text": "Our goal is to produce interactive advertising films that open up innovative ways to market products. We are currently working on an exciting project to promote a unique drink. Our interactive advertising will not only effectively support our client's advertising objectives, but will also engage viewers in a new way by encouraging them to actively engage with the product. We define clear milestones and progress measurements for the completion to ensure that we maintain our high quality standards. Our team is made up of talented film, audio and web development students who combine their individual strengths and expertise to successfully implement the project."
    },
 
    "projects": {
@@ -79,6 +80,9 @@
       "headline": "Error 404",
       "text": "This page could not be found",
          "link": "Back Home"
-   }
+   },
+
+   "legal-notice": "Legal Notice",
+   "privacy-policy": "Privacy Policy"
 
  }

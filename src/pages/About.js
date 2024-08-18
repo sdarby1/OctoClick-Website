@@ -8,11 +8,10 @@ const About = () => {
   return (
     <div className="margin-container">
       <div className="boxed-container">
-
-
-        <h2 className='page-headline'>{t('about-us.headline')}<span className="headline-end">.</span></h2>
-
-        
+        <div className='about-container'>
+          <h2 className='page-headline'>{t('about-us.headline')}<span className="headline-end">.</span></h2>
+          <p>{t('about-us.text')}</p>
+        </div>
       </div>
     </div>
   )
